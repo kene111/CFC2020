@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Apr 22 01:50:41 2020
-
-@author: User
-"""
-
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 
@@ -19,15 +12,25 @@ uClient.close()
 
 page_soup = BeautifulSoup(page_html, 'html.parser')
 
-containers = page_soup.findAll('div', {'class':'hl__inner'})
+containers = page_soup.findAll('div', {'class':'newsfeed'})
 
-# Main things I thinnk we need from the website is the Headline, a link to read the article
-# and the time the Natural Disaster was reported. Stored them all in the lists. They're
-# in order.
+# From all the containers, the only relevant one for Natural disasters is the one in index 1
+# The latest_news_container holds info of Natural Disaster headlines stretching back to maybe
+# even the previous day, but at least throughout that day.
+
+latest_news_container = containers[1].findAll('div', {'class': 'hl'})
+
+
+# Fortunately I was able to improve on the scipt and found it was possible to get the country the disaster
+# was occuring at, or at least the country it was being reported. Unfortunately, the country info is
+# in the acronym form. E.g. Canada is CA. So that's something we might need to get past later
+
 headlines = []
 forwards = []
+countries = []
 times = []
-for container in containers:
+
+for container in latest_news_container:
     try:
         headlines.append(container.a.text)
     except:
@@ -39,9 +42,17 @@ for container in containers:
         forwards.append(None)
         
     try:
+        countries.append(container.span['c'])
+    except:
+        countries.append(None)
+        
+    try:
         times.append(container.find('span', {'class':'time'}).text)
     except:
         times.append(None)
 
-# Unfortunately not all the info may have been given, especially for the time.
-# So I put a 'None' for any missing value
+# Important info: I haven't seen any point where any of the headlines, country, link or time information
+# is missing, so adding "None" if any info is not present is just a precautionary thing.
+# Also, for the "times" values, if only the time is given and the day is not given, then the day the headline
+# was reported is the present day. Otherwise, the day will be given. Usually, the script only covers headlines
+# from the present and previous day and they are arranged in chronological order by default.
