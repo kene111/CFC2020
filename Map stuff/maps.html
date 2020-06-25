@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Building a complete Front-end Website.</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link  rel="stylesheet" href="maps.css" >
+        
+        <script type="text/javascript" src = "maps.js"></script>
+        <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"  type="text/javascript" charset="utf-8"></script>
+        <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
+       <!--<script src="https://js.api.here.com/v3/3.1/mapsjs-core-legacy.js"  type="text/javascript" charset="utf-8"></script>
+        <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
+        <script src="https://js.api.here.com/v3/3.1/mapsjs-service-legacy.js" type="text/javascript" charset="utf-8"></script>
+        <script type="module" src="https://js.api.here.com/v3/3.1/mapsjs.bundle.js"></script> --> 
+        <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+        <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+        <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script> 
+
+      
+
+        
+    </head>
+
+<body>
+
+      <!--  <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"  type="text/javascript" charset="utf-8"></script>
+        <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
+        <script src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript" src = "maps.js"></script>  -->
+
+        <header>
+         <div id ="navigation">
+            <ul id = "ul_1">
+                <li class="l_1"><a href="learn.html">N.D.I.A</a></li>
+                <li class="l_1"><a href="chat.html">Ask Me</a></li>
+                <li class="l_1"><a href="maps.html">Maps</a></li>
+                <li class="l_drop">
+                        <a href="javascript:void(0)" class="drop_btn">Information</a>
+                        <div class="drop_content">
+                          <a href="#">What's Happening ?</a>
+                          <a href="#">Thoughts</a>  
+                        </div>
+                </li>
+            </ul>
+         </div>
+         <div id="logo"> <a href ="/"> <img id ="ibm_image" src= "cfc.png" alt="IBM Call For Code"> </a> </div>
+        </header>
+
+        </header>
+        <h2 class = 'titles'style ="text-align:center; text-decoration: underline; color:blanchedalmond;"> SHOW ME THE WAY!</h2>
+        <div id = "map">     
+        </div>
+
+         <button id = 'map_button' onclick=" getMyCurrentLocation()">GET AND DISPLAY MY LOCATION</button> 
+        
+
+      <!--
+        <footer id= "foot" >
+            <p id = "id_footer"> Team #### ©  2020</p>
+        </footer>
+
+    -->
+
+    
+        
+        
+
+       
+    
+</body>
+</html>
