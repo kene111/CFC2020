@@ -26,7 +26,7 @@ def chatbot():
     else:
         chat = request.form["text"]
         
-    with open('watson_api_info.json', 'r') as f:
+    with open('watson_chatbot/watson_api_info.json', 'r') as f:
         secrets = json.load(f)
     
     try:
@@ -53,7 +53,7 @@ def chatbot():
             }
         ).get_result()
         
-        return response['output']['generic'][0]['text']
+        return response
     
     except ApiException as ex:
         return 'Method failed with status code' + str(ex.code) + ': ' + ex.message     
