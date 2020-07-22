@@ -1,0 +1,40 @@
+{
+  "expo": {
+    "name": "cfc-mobile-app",
+    "slug": "cfc-mobile-app",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "bundleIdentifier": "com.cfcmobileapp.ndia",
+      "supportsTablet": true,
+      "config": {
+        "googleMapsApiKey": "AIzaSyBOprg2OJH9IbRAhbABGsCuhGe2k-2k7_A"
+      }
+    },
+    "android": {
+      "package": "com.cfcmobileapp.ndia",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyC1lqaagDyxM_XYD4JkJ4vdeZt_Ue-SYlI"
+        }
+      }
+    }
+  }
+}
