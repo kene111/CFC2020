@@ -4,8 +4,6 @@
 
 GitHub repository for Project N.D.I.A (Natural Disaster Informant and Assistant), our proposed solution for the Call for Code 2020 Competition on halting the effects of Climate Change.
 
-*Read this in other languages: [English](README.md), [한국어](README.ko.md), [português](README.pt_br.md).*
-
 ## Contents
 
 1. [Short description](#short-description)
@@ -43,12 +41,13 @@ A Natural Disaster Informant and Assistant (N.D.I.A) possessing attributes to he
 
 ## The architecture
 
-![Video transcription/translation app](https://developer.ibm.com/developer/tutorials/cfc-starter-kit-speech-to-text-app-example/images/cfc-covid19-remote-education-diagram-2.png)
+![N.D.I.A Native Application](images/app-architecture.jpg)
 
-1. The user navigates to the site and uploads a video file.
-2. Watson Speech to Text processes the audio and extracts the text.
-3. Watson Translation (optionally) can translate the text to the desired language.
-4. The app stores the translated text as a document within Object Storage.
+1. The user launches the mobile app and has access to information on natural disasters happening not just in the user's country, but also all around the world using the News Now Platform and Twitter's Search API.
+2. The user can ask questions to Watson Assistant and get answers to natural disaster planning and other recovery-related questions.
+3. The user can view natural disaster predictions over the next 21 days based from machine learning models that have been trained on previous natural disaster occurences so as to get a head-start in preparations.
+4. The user can seek immediate help by sending an e-mail for help or calling the provided natural disaster helplines in the contact center.
+5. The user can obtain geolocation data for which have been reported by other users to be affected by natural disasters so as to avoid these places as well as plot evacuation routes to places of their choice and even locate the nearest hospitals using Google Maps Platform.
 
 ## Long description
 
@@ -94,7 +93,7 @@ You can find a running system to test at [callforcode.mybluemix.net](http://call
 * [IBM Cloudant](https://cloud.ibm.com/catalog?search=cloudant#search_results) - The NoSQL database used
 * [Google Maps Platform](https://developers.google.com/maps/documentation) - APIs used for building the maps feature
 * [Twitter Search API](https://developer.twitter.com/en/docs/tweets/search/api-reference/get-search-tweets) - API used for getting tweets related to natural disasters
-* [NewsNow](https://newsnow.co.uk/) - News Platform used for getting immediate natural disaster news from around the world
+* [News Now](https://newsnow.co.uk/) - News Platform used for getting immediate natural disaster news from around the world
 
 ## Contributing
 
