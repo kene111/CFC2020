@@ -1,6 +1,6 @@
-# Submission name
+# Natural Disaster Informant and Assistant (N.D.I.A)
 
-[![License](https://img.shields.io/badge/License-Apache2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0) [![Slack](https://img.shields.io/badge/Join-Slack-blue)](https://callforcode.org/slack) [![Website](https://img.shields.io/badge/View-Website-blue)](https://code-and-response.github.io/Project-Sample/)
+[![License](https://img.shields.io/badge/License-Apache2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0) [![N.D.I.A Website](https://img.shields.io/badge/View-Website-blue)](https://code-and-response.github.io/Project-Sample/)
 
 A basic GitHub repository example for Call for Code submissions and those projects that join the Code and Response initiative. Not all sections or files are required. You can make this as simple or as in-depth as you need.
 
@@ -25,7 +25,7 @@ A basic GitHub repository example for Call for Code submissions and those projec
 
 ## Short description
 
-### What's the problem?
+### The Ongoing Natural Disaster Conundrum
 
 Natural disasters continue to unfortunately birth major issues to humans, arguably more than ever in this current time. According to [ourworldindata.org](https://ourworldindata.org/natural-disasters), approximately
 60,000 people are casualties of these catastrophes and the cost of damage for just 2019 was estimated to fall in the region of an astonishing $150 billion dollars. It is evident now more than ever that finding avenues to address this issue is paramount, and what better way than take advantage of the tools technology has given us to not just mitigate, but also reverse the problems natural disasters have caused.
@@ -61,64 +61,29 @@ A Natural Disaster Informant and Assistant (N.D.I.A) possessing attributes to he
 
 ## Getting started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the React Native application up and running on your local machine for development and testing purposes
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+Before getting started, you'll need to have the following;
+
+* NodeJS - You can get the latest version of Node.js [here](https://nodejs.org/en/)
+* Expo - Great for building react native applications. Once you've gotten NodeJS, simply open your command line tool and enter
 
 ```bash
-dnf install wget
-wget http://www.example.com/install.sh
-bash install.sh
+npm install expo-cli --global
 ```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be, for example
-
-```bash
-export TOKEN="fffd0923aa667c617a62f5A_fake_token754a2ad06cc9903543f1e85"
-export EMAIL="jane@example.com"
-dnf install npm
-node samplefile.js
-Server running at http://127.0.0.1:3000/
-```
-
-And repeat
-
-```bash
-curl localhost:3000
-Thanks for looking at Code-and-Response!
-```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why, if you were using something like `mocha` for instance
+To run the project, go to the native application's directory on your command line tool and enter
 
 ```bash
-npm install mocha --save-dev
-vi test/test.js
-./node_modules/mocha/bin/mocha
+expo start
 ```
+The project is going to build on your machine's local host and can be viewed on both iOS and Android devices by simply following the instructions given on the command line.
 
-### And coding style tests
-
-Explain what these tests test and why, if you chose `eslint` for example
-
-```bash
-npm install eslint --save-dev
-npx eslint --init
-npx eslint sample-file.js
-```
+For more information on getting started with Expo, you can visit [their website](https://expo.io/).
 
 ## Live demo
 
@@ -126,26 +91,20 @@ You can find a running system to test at [callforcode.mybluemix.net](http://call
 
 ## Built with
 
+* [Watson Assistant](https://www.ibm.com/cloud/watson-assistant/) - AI Platform used for the chatbot 
 * [IBM Cloudant](https://cloud.ibm.com/catalog?search=cloudant#search_results) - The NoSQL database used
-* [IBM Cloud Functions](https://cloud.ibm.com/catalog?search=cloud%20functions#search_results) - The compute platform for handing logic
-* [IBM API Connect](https://cloud.ibm.com/catalog?search=api%20connect#search_results) - The web framework used
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Google Maps Platform](https://developers.google.com/maps/documentation) - APIs used for building the maps feature
+* [Twitter Search API](https://developer.twitter.com/en/docs/tweets/search/api-reference/get-search-tweets) - API used for getting tweets related to natural disasters
+* [NewsNow](https://newsnow.co.uk/) - News Platform used for getting immediate natural disaster news from around the world
 
 ## Contributing
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
-
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/Code-and-Response/Project-Sample/graphs/contributors) who participated in this project.
+* **Kenechi Ojukwu** - [kene111](https://github.com/kene111)
+* **David Akana** - [David-Akana](https://github.com/David-Akana)
 
 ## License
 
