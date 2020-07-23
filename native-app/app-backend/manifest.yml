@@ -1,5 +1,0 @@
----
-applications:
-- name: Ndia-API
-  random-route: true
-  memory: 256M

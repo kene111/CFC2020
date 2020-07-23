@@ -19,21 +19,27 @@ from dateutil.parser import parse
 
 app = Flask(__name__)
 
+with open('mail_secrets.json', 'r') as f:
+    mail_secrets = json.load(f)
+
 app.config.update(
     ENV = 'development',
     MAIL_SERVER = 'smtp.gmail.com',
     MAIL_PORT = 465,
-    MAIL_USERNAME = 'tocrear.3@gmail.com',
-    MAIL_PASSWORD = '3L_9sy_Congr00',
+    MAIL_USERNAME = mail_secrets['mail_username'],
+    MAIL_PASSWORD = mail_secrets['mail_password'],
     MAIL_USE_TLS = False,
     MAIL_USE_SSL = True
     )
 
 mail = Mail(app)
 
-serviceUsername = "a179d248-5d9e-4a82-8fcc-cc91bf96f51d-bluemix"
-serviceKey = "977ZR-kKgGj3QnSAy-FC1tsVrF_gSUHmuJDCy3tZGiER"
-serviceUrl = "https://a179d248-5d9e-4a82-8fcc-cc91bf96f51d-bluemix.cloudantnosqldb.appdomain.cloud"
+with open('cloudant_secrets.json', 'r') as f:
+    cloudant_secrets = json.load(f)
+
+serviceUsername = cloudant_secrets['username']
+serviceKey = cloudant_secrets['api_key']
+serviceUrl = cloudant_secrets['url']
 
 client = Cloudant.iam(serviceUsername, serviceKey, url=serviceUrl)
 client.connect()
@@ -188,8 +194,11 @@ def tweets():
         tweets = []
         for ti in tweets_info:
             tweets.append(ti['tweet'])
+
+        with open('censored_words.json', 'r') as f:
+            censored_words = json.load(f)
         
-        bad_words = ['ass', 'fuck', 'fucking', 'bitch']
+        bad_words = censored_words['censored_words'] # words that will be seen as sensitive and should not be included in tweets
         for i in range(len(tweets)):
             clean_tweet = tweets[i].lower()
             clean_tweet = re.sub(r"[!-()\"#/&@;:<>{}+=~|.?,]", "", clean_tweet)
@@ -222,8 +231,8 @@ def send_location():
         body = 'Help is needed in the vicinity {}. Latitude: {} and Longitude {}'.format(user_vicinity, user_latitude, user_longitude)
         
         msg = Message(subject,
-                      sender='tocrear.3@gmail.com',
-                      recipients=['dcakana@gmail.com'])
+                      sender=mail_secrets['mail_username'],
+                      recipients=['dcakana@gmail.com']) # The help message is to be sent to this email
         msg.body = body
         
         mail.send(msg)
@@ -346,9 +355,12 @@ def disaster_locations():
                 
         distance_to_disasters = []
         
+        with open('google_secrets.json', 'r') as f:
+            google_secrets = json.load(f)
+
         google_directions_url = "https://maps.googleapis.com/maps/api/directions/json"
         origin = str(user_latitude) + ',' + str(user_longitude)
-        key = "AIzaSyBg2Fd0_JIZSolhyj-pZXUvpo7QNE9szXE"
+        key = google_secrets['directions_api_key']
         request_params = {
             'origin': origin,
             'key': key
@@ -362,9 +374,13 @@ def disaster_locations():
             
             response = requests.get(google_directions_url, params=request_params)
             response_json = response.json()
-            distance = response_json['routes'][0]['legs'][0]['distance']['text']
-            distance = distance.split(' ')[0]
-            distance_to_disasters.append((doc_id, distance))
+
+            if response_json['status'] == 'OK':
+                distance = response_json['routes'][0]['legs'][0]['distance']['text']
+                distance = distance.split(' ')[0]
+                distance_to_disasters.append((doc_id, distance))
+            else:
+                pass
             
         distance_to_disasters.sort(key=lambda x: x[1])
         distance_to_disasters = distance_to_disasters[:5] # Choose only the first 5
