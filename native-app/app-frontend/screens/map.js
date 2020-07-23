@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import MapView, { Marker, Polyline } from 'react-native-maps';
 import { View, Text, StyleSheet, TextInput, Modal, TouchableOpacity, Keyboard, FlatList, Alert, SafeAreaView, Image } from 'react-native';
 
+import { Constants } from 'expo';
+
 import { decode } from "@mapbox/polyline";
 
 import * as Location from 'expo-location';
@@ -17,7 +19,7 @@ import { error } from 'react-native-gifted-chat/lib/utils';
 
 const getDirections = async (startLoc, destinationLoc) => {
     try {
-        const KEY = "AIzaSyBg2Fd0_JIZSolhyj-pZXUvpo7QNE9szXE";
+        const KEY = Constants.manifest.extra.directionsApiKey;
         let resp = await fetch(
             `https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc}&destination=${destinationLoc}&key=${KEY}`
         );
@@ -41,7 +43,7 @@ const getDirections = async (startLoc, destinationLoc) => {
 
 const getLatLng = async (destination) => {
     try {
-        const KEY = "AIzaSyApZA2kzNzsYLa2IeGkOIB-XA87l5hz-vw"
+        const KEY = Constants.manifest.extra.geocoderApiKey;
         let resp = await fetch (`https://maps.googleapis.com/maps/api/geocode/json?address=${destination}&key=${KEY}`, {
         method: 'GET',    
         headers: {
@@ -60,7 +62,7 @@ const getLatLng = async (destination) => {
 }
 const reverseGeocoder = async (userCoords) => {
     try {
-        const KEY = "AIzaSyApZA2kzNzsYLa2IeGkOIB-XA87l5hz-vw"
+        const KEY = Constants.manifest.extra.geocoderApiKey;
         let resp = await fetch (`https://maps.googleapis.com/maps/api/geocode/json?latlng=${userCoords.latitude},${userCoords.longitude}&key=${KEY}`, {
         method: 'GET',    
         headers: {
@@ -76,7 +78,7 @@ const reverseGeocoder = async (userCoords) => {
 
 const getPlaces = async (currentPosition, place) => {
     try {
-        const KEY = "AIzaSyDOCrH_Z5Yu05mweTynk0gx9BxQNT_3eo0";
+        const KEY = Constants.manifest.extra.placesApiKey;
         let resp = await fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${currentPosition}&radius=2000&types=${place}&key=${KEY}`, {
             method: 'GET',
             headers: {

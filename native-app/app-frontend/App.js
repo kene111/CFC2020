@@ -73,7 +73,7 @@ const TabLayout = () => (
     />
     <Tab.Screen
       name='Chat'
-      component={sChat}
+      component={Chat}
       options={{
         tabBarIcon: ({color}) => (<ChatIcon fill={color} />)
       }}

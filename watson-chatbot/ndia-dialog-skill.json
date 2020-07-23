@@ -1,0 +1,1357 @@
+{
+  "intents": [
+    {
+      "intent": "Flood_Travel",
+      "examples": [
+        {
+          "text": "Should I walk through flood waters"
+        },
+        {
+          "text": "Should I pass through a flooded roadway?"
+        },
+        {
+          "text": "Should I travel across a flood zone?"
+        },
+        {
+          "text": "Can I drive though a flooded area?"
+        },
+        {
+          "text": "Can i bike through the flood?"
+        },
+        {
+          "text": "How do I cross a flooded area?"
+        },
+        {
+          "text": "Is it safe to swim in flood waters?"
+        }
+      ],
+      "description": "Passing through a flood zone"
+    },
+    {
+      "intent": "Flood_During",
+      "examples": [
+        {
+          "text": "the flood is here"
+        },
+        {
+          "text": "my neighborhood is flooding"
+        },
+        {
+          "text": "what happens during a flood"
+        },
+        {
+          "text": "I just received a flood warning"
+        },
+        {
+          "text": "What actions do I need to take while in a flood area?"
+        },
+        {
+          "text": "there is a flood help"
+        },
+        {
+          "text": "Do I need to evacuate during a flood?"
+        },
+        {
+          "text": "What do I do during a flood?"
+        },
+        {
+          "text": "How can I survive a flood?"
+        },
+        {
+          "text": "Where is the safest place?"
+        },
+        {
+          "text": "Where should I go during a flood?"
+        },
+        {
+          "text": "What do I do when a flood is happening?"
+        },
+        {
+          "text": "i am stuck in a flood"
+        }
+      ],
+      "description": "Surviving during a flood"
+    },
+    {
+      "intent": "Reply_Eni",
+      "examples": [
+        {
+          "text": "Yo bu se yooo"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Earthquake_About",
+      "examples": [
+        {
+          "text": "What is an earthquake"
+        },
+        {
+          "text": "describe earthquakes"
+        },
+        {
+          "text": "What causes earthquakes?"
+        },
+        {
+          "text": "what creates earthquakes?"
+        },
+        {
+          "text": "why do earthquakes happen"
+        },
+        {
+          "text": "how do earthquakes occur"
+        },
+        {
+          "text": "What can you say about earthquakes"
+        },
+        {
+          "text": "earthquake"
+        },
+        {
+          "text": "What causes earthquakes"
+        }
+      ],
+      "description": "General earthquake information"
+    },
+    {
+      "intent": "Wildfire_During",
+      "examples": [
+        {
+          "text": "the wildfire is here"
+        },
+        {
+          "text": "staying alive during a wildfire"
+        },
+        {
+          "text": "there is a wildfire help"
+        },
+        {
+          "text": "survive a wildfire"
+        }
+      ],
+      "description": "Surviving a wildfire"
+    },
+    {
+      "intent": "Flood_About",
+      "examples": [
+        {
+          "text": "What do I need to know about floods?"
+        },
+        {
+          "text": "Do you know about floods?"
+        },
+        {
+          "text": "What can you say about floods?"
+        },
+        {
+          "text": "flood"
+        },
+        {
+          "text": "What is a flood?"
+        },
+        {
+          "text": "Describe floods"
+        },
+        {
+          "text": "How does flooding happen?"
+        },
+        {
+          "text": "What causes floods?"
+        },
+        {
+          "text": "Tell me about floods"
+        },
+        {
+          "text": "I want to know more about floods"
+        },
+        {
+          "text": "Why does flooding occur?"
+        }
+      ],
+      "description": "General flood information"
+    },
+    {
+      "intent": "General_About_You",
+      "examples": [
+        {
+          "text": "Who are you?"
+        },
+        {
+          "text": "How do you function?"
+        },
+        {
+          "text": "How old are you?"
+        },
+        {
+          "text": "Why are you here?"
+        },
+        {
+          "text": "About you"
+        },
+        {
+          "text": "Can I use another language?"
+        },
+        {
+          "text": "Describe your self"
+        },
+        {
+          "text": "Do you have a name?"
+        },
+        {
+          "text": "Do you know who you are?"
+        },
+        {
+          "text": "How can I configure you?"
+        },
+        {
+          "text": "What's your name?"
+        },
+        {
+          "text": "Introduce your self"
+        },
+        {
+          "text": "Let us talk about you"
+        },
+        {
+          "text": "Tell me about your life"
+        },
+        {
+          "text": "Tell me something about yourself"
+        },
+        {
+          "text": "What languages do you speak?"
+        },
+        {
+          "text": "What should I know about you?"
+        },
+        {
+          "text": "I want to set up the chat bot for my shop"
+        },
+        {
+          "text": "Where are you from?"
+        },
+        {
+          "text": "Where were you born?"
+        }
+      ],
+      "description": "Request generic personal attributes."
+    },
+    {
+      "intent": "Flood_Before",
+      "examples": [
+        {
+          "text": "Any guidance on how to prepare?"
+        },
+        {
+          "text": "Do I need a plan?"
+        },
+        {
+          "text": "What safety precautions do I need to take?"
+        },
+        {
+          "text": "Can I plan ahead?"
+        },
+        {
+          "text": "How can I reduce the impact?"
+        },
+        {
+          "text": "How do I prepare?"
+        },
+        {
+          "text": "What do I need to do before a flood?"
+        },
+        {
+          "text": "what happens before a flood"
+        },
+        {
+          "text": "What do you recommend I do to be ready?"
+        },
+        {
+          "text": "Tell me what I need before a flood warning"
+        },
+        {
+          "text": "How do I know I am ready for a flood?"
+        }
+      ],
+      "description": "Preparing for a flood"
+    },
+    {
+      "intent": "Small_Talk",
+      "examples": [
+        {
+          "text": "how has your day been"
+        },
+        {
+          "text": "how are you"
+        },
+        {
+          "text": "are you alright"
+        },
+        {
+          "text": "what are you up to"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Wildfire_About",
+      "examples": [
+        {
+          "text": "describe what a wildfire is"
+        },
+        {
+          "text": "what causes wildfires"
+        },
+        {
+          "text": "explain wildfire"
+        },
+        {
+          "text": "what is a wildfire"
+        },
+        {
+          "text": "how do wildfires happen"
+        }
+      ],
+      "description": "General wildfire information"
+    },
+    {
+      "intent": "Chatbot_About",
+      "examples": [
+        {
+          "text": "tell me your aim"
+        },
+        {
+          "text": "what are your features"
+        },
+        {
+          "text": "how can you help me"
+        },
+        {
+          "text": "what do you do"
+        },
+        {
+          "text": "what are you"
+        },
+        {
+          "text": "give me your purpose and objective"
+        },
+        {
+          "text": "are you human"
+        }
+      ],
+      "description": "Information on chatbot"
+    },
+    {
+      "intent": "Frequently_Asked_Flood_Questions",
+      "examples": [
+        {
+          "text": "Do floods occur regularly"
+        },
+        {
+          "text": "What are the chances of a flood where I am"
+        },
+        {
+          "text": "Will there be a flood here"
+        },
+        {
+          "text": "What are the reasons for floods"
+        },
+        {
+          "text": "Why do floods occur"
+        },
+        {
+          "text": "What are floods measured with"
+        },
+        {
+          "text": "What are the main effects of flood"
+        },
+        {
+          "text": "How do we prevent floods"
+        },
+        {
+          "text": "What are the advantages of flood"
+        },
+        {
+          "text": "What are the positive effects of flood"
+        },
+        {
+          "text": "What is the impact of flood"
+        },
+        {
+          "text": "What are the effects of flood"
+        },
+        {
+          "text": "How often do floods occur"
+        }
+      ],
+      "description": "Questions about Floods"
+    },
+    {
+      "intent": "General_Ending",
+      "examples": [
+        {
+          "text": "I have got to go"
+        },
+        {
+          "text": "Time to go"
+        },
+        {
+          "text": "That's everything"
+        },
+        {
+          "text": "That is all"
+        },
+        {
+          "text": "Thanks very much, bye!"
+        },
+        {
+          "text": "Thanks, bye!"
+        },
+        {
+          "text": "Thank you for your time"
+        },
+        {
+          "text": "Stop talking to me"
+        },
+        {
+          "text": "Stop doing this"
+        },
+        {
+          "text": "Shut up"
+        },
+        {
+          "text": "See you"
+        },
+        {
+          "text": "See you later"
+        },
+        {
+          "text": "Ok goodbye"
+        },
+        {
+          "text": "It was nice chatting with you"
+        },
+        {
+          "text": "I'm leaving now"
+        },
+        {
+          "text": "Im good thank you"
+        },
+        {
+          "text": "Im done"
+        },
+        {
+          "text": "I'm done"
+        },
+        {
+          "text": "I want to quit"
+        },
+        {
+          "text": "I d like to stop doing this"
+        },
+        {
+          "text": "I am out of here"
+        },
+        {
+          "text": "I am leaving"
+        },
+        {
+          "text": "Hey bot go away"
+        },
+        {
+          "text": "Goodbye"
+        },
+        {
+          "text": "Good. bye."
+        },
+        {
+          "text": "Going now"
+        },
+        {
+          "text": "Go off"
+        },
+        {
+          "text": "Go away"
+        },
+        {
+          "text": "Get lost"
+        },
+        {
+          "text": "Finished now, good bye"
+        },
+        {
+          "text": "Ending this session"
+        },
+        {
+          "text": "End trial"
+        },
+        {
+          "text": "Cya later"
+        },
+        {
+          "text": "Catch you later"
+        },
+        {
+          "text": "Bye now"
+        },
+        {
+          "text": "Bye bye"
+        },
+        {
+          "text": "Have a nice day?"
+        },
+        {
+          "text": "Goodbye Watson"
+        }
+      ],
+      "description": "End the conversation."
+    },
+    {
+      "intent": "Wildfire_After",
+      "examples": [
+        {
+          "text": "what do i do after a wildfire"
+        },
+        {
+          "text": "is it safe to go outside after the flames of the wildfire are gone"
+        },
+        {
+          "text": "recovering from a wildfire"
+        },
+        {
+          "text": "can i go outside with the smoke"
+        }
+      ],
+      "description": "Recovering from a wildfire"
+    },
+    {
+      "intent": "Flood_After",
+      "examples": [
+        {
+          "text": "Flooding has stopped, am I safe?"
+        },
+        {
+          "text": "Is it ok to return home?"
+        },
+        {
+          "text": "When can I go home?"
+        },
+        {
+          "text": "When do I return to my house after a flood?"
+        },
+        {
+          "text": "What do I need to do after a flood?"
+        },
+        {
+          "text": "How do I recover from a flood?"
+        },
+        {
+          "text": "What should I do when the flooding goes away?"
+        },
+        {
+          "text": "the flood is gone"
+        },
+        {
+          "text": "Flood clean up"
+        },
+        {
+          "text": "Flood aftermath"
+        },
+        {
+          "text": "i am ready to head back to the apartment"
+        },
+        {
+          "text": "what happens after a flood"
+        }
+      ],
+      "description": "Recovering from a flood"
+    },
+    {
+      "intent": "Emergency_Number",
+      "examples": [
+        {
+          "text": "i need to call an emergency agency"
+        },
+        {
+          "text": "a natural disaster is happening right now"
+        },
+        {
+          "text": "give me emergency numbers"
+        },
+        {
+          "text": "who should i call in case of a natural disaster"
+        },
+        {
+          "text": "how do i get help"
+        },
+        {
+          "text": "who can i get assistance from"
+        }
+      ],
+      "description": "Give directions to emergency numbers"
+    },
+    {
+      "intent": "Flood_Danger",
+      "examples": [
+        {
+          "text": "Am I safe around floods?"
+        },
+        {
+          "text": "Are floods dangerous?"
+        },
+        {
+          "text": "Should I be careful around floods?"
+        },
+        {
+          "text": "Why do we have flood warnings?"
+        },
+        {
+          "text": "What are floods capable of?"
+        },
+        {
+          "text": "What can floods do?"
+        },
+        {
+          "text": "How much damage can flooding cause?"
+        }
+      ],
+      "description": "Dangers of floods"
+    },
+    {
+      "intent": "Earthquake_After",
+      "examples": [
+        {
+          "text": "where should i go once the earthquake is over"
+        },
+        {
+          "text": "am i safe after an earthquake"
+        },
+        {
+          "text": "what should be done after an earthquake"
+        },
+        {
+          "text": "how do i recover from an earthquake"
+        },
+        {
+          "text": "is it ok to go home after an earthquake"
+        },
+        {
+          "text": "evacuate after an earthquake"
+        },
+        {
+          "text": "what to do after an earthquake"
+        }
+      ],
+      "description": "Recovering from an Earthquake"
+    },
+    {
+      "intent": "Wildfire_Before",
+      "examples": [
+        {
+          "text": "how do i prepare for a wildfire"
+        },
+        {
+          "text": "tips for getting ready in case of a wildfire"
+        },
+        {
+          "text": "what to do before a wildfire"
+        }
+      ],
+      "description": "Preparing for a wildfire"
+    },
+    {
+      "intent": "General_Greetings",
+      "examples": [
+        {
+          "text": "Hey you"
+        },
+        {
+          "text": "Hello"
+        },
+        {
+          "text": "Hello I am looking for some help here"
+        },
+        {
+          "text": "Hello Agent"
+        },
+        {
+          "text": "Have you been well?"
+        },
+        {
+          "text": "Greetings"
+        },
+        {
+          "text": "Good to see you"
+        },
+        {
+          "text": "Good morning"
+        },
+        {
+          "text": "Good evening"
+        },
+        {
+          "text": "Good day"
+        },
+        {
+          "text": "Hey how are you doing"
+        },
+        {
+          "text": "Hey there all"
+        },
+        {
+          "text": "Hey there"
+        },
+        {
+          "text": "Hey twin"
+        },
+        {
+          "text": "Hi advisor"
+        },
+        {
+          "text": "Hi there"
+        },
+        {
+          "text": "How are things going?"
+        },
+        {
+          "text": "How are you today?"
+        },
+        {
+          "text": "How have you been?"
+        },
+        {
+          "text": "How is it going?"
+        },
+        {
+          "text": "How r u?"
+        },
+        {
+          "text": "Looking good eve"
+        },
+        {
+          "text": "Ok take me back"
+        },
+        {
+          "text": "What's new?"
+        },
+        {
+          "text": "What's up?"
+        },
+        {
+          "text": "Who is this?"
+        },
+        {
+          "text": "You there"
+        },
+        {
+          "text": "Hello Watson"
+        }
+      ],
+      "description": "Greet the bot."
+    },
+    {
+      "intent": "Earthquake_Danger",
+      "examples": [
+        {
+          "text": "things to worry about with earthquakes"
+        },
+        {
+          "text": "should i be scared of an earthquake"
+        },
+        {
+          "text": "what are the effects of earthquakes"
+        },
+        {
+          "text": "what are the dangers of earthquakes"
+        }
+      ],
+      "description": "Dangers of Earthquakes"
+    },
+    {
+      "intent": "Safety_Tips",
+      "examples": [
+        {
+          "text": "any help for natural disasters"
+        },
+        {
+          "text": "give me natural disaster safety tips"
+        },
+        {
+          "text": "inform me on what to do in a disaster"
+        },
+        {
+          "text": "tell me something"
+        },
+        {
+          "text": "give me information on how i can keep safe"
+        },
+        {
+          "text": "relevant things i should know"
+        },
+        {
+          "text": "how do i keep safe"
+        }
+      ],
+      "description": "Giving safety tips"
+    },
+    {
+      "intent": "Eathquake_During",
+      "examples": [
+        {
+          "text": "there is an earthquake help"
+        },
+        {
+          "text": "the earthquake is here"
+        },
+        {
+          "text": "what should i do when an earthquake happens"
+        },
+        {
+          "text": "What to do during an earthquake"
+        },
+        {
+          "text": "safety precautions for an earthquake"
+        },
+        {
+          "text": "how to plan for an earthquake"
+        },
+        {
+          "text": "how do i prepare for an earthquake"
+        },
+        {
+          "text": "what do i do during an earthquake"
+        },
+        {
+          "text": "give me earthquake drills"
+        },
+        {
+          "text": "earthquake procedures"
+        }
+      ],
+      "description": "Surviving an Earthquake"
+    }
+  ],
+  "entities": [],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    },
+    "from-sample": true
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "- Children, pregnant women, and people with asthma, Chronic Obstructive Pulmonary Disease (COPD), or heart disease need to be especially careful about breathing in dust from ash.\n- Protect yourself against ash when you clean up. Wear gloves, long-sleeved shirts, long pants, and shoes and socks to protect your skin. Wear goggles to protect your eyes.\nWash off any ash that gets on your skin or in your eyes or mouth as soon as you can.\n- Limit how much ash you breathe in by wearing a respirator. Note that respirators are not made to fit children.\n- Wait to return to buildings during daylight hours, when it is easier to avoid hazards, especially if the electricity is off and you have no lights."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Wildfire_After",
+      "dialog_node": "node_8_1594736587643",
+      "previous_sibling": "node_6_1594737029683"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "- DROP down onto your hands and knees before the earthquake would knock you down. This position protects you from falling but still allows you to move if necessary.\n- COVER your head and neck (and your entire body if possible) under the shelter of a sturdy table or desk. If there is no shelter nearby, get down near an interior wall or next to low-lying furniture that won’t fall on you, and cover your head and neck with your arms and hands. Try to stay clear of windows or glass that could shatter or objects that could fall on you.\n- HOLD ON to your shelter (or to your head and neck) until the shaking stops. Be prepared to move with your shelter if the shaking shifts it around."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Eathquake_During",
+      "dialog_node": "node_5_1594732585474",
+      "previous_sibling": "node_1_1594733362751"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Do not walk, swim, or drive through flood waters. Never cross any barriers that are put in place by emergency officials. You likely will not know the depth of the water or the condition of the ground. Road beds may be washed out under flood waters."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Flood_Travel",
+      "dialog_node": "node_7_1584394345975",
+      "previous_sibling": "node_2_1584231537199"
+    },
+    {
+      "type": "standard",
+      "title": "#Earthquakes_About",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Earthquake, any sudden shaking of the ground caused by the passage of seismic waves through Earth’s rocks. Seismic waves are produced when some form of energy stored in Earth’s crust is suddenly released, usually when masses of rock straining against one another suddenly fracture and “slip.” Earthquakes occur most often along geologic faults, narrow zones where rock masses move in relation to one another. The major fault lines of the world are located at the fringes of the huge tectonic plates that make up Earth’s crust."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Earthquake_About",
+      "dialog_node": "node_9_1588171145203",
+      "previous_sibling": "node_2_1594731762772"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "- Find several ways to leave your area.\n- Drive the evacuation routes and find shelter locations.\n- Gather emergency supplies, such as respirators. A respirator filters out smoke or ash before you can breathe it in.  Respirators are not made to fit children.\nRemember the needs of children, pregnant women, and individuals with medical conditions like asthma, Chronic Obstructive Pulmonary Disease (COPD), or heart disease.\n- Choose a room you can close off from outside air.\n- Set up a portable air cleaner or a filter to keep the air in this room cleaner even when it’s smoky outdoors or in the rest of your home."
+              },
+              {
+                "text": " "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Wildfire_Before",
+      "dialog_node": "node_4_1594735091440",
+      "previous_sibling": "node_10_1594735993970"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "It is crucial to choose a room you can close off from outside air. Also ensure to set up a portable air cleaner or a filter to keep the air in this room clean even when it’s smoky in the rest of the building and outdoors. Reduce your smoke exposure by wearing a respirator as well.\nIf you have heart or lung disease ask your doctor if it is safe for you to wear a respirator.\nAvoid using candles, gas, propane, wood-burning stoves, fireplaces, or aerosol sprays and don’t fry or broil meat, smoke tobacco products, or vacuum.\nAlso, use high efficiency filters to capture fine particles from smoke in air conditioners. If your system has a fresh air intake, set the system to recirculate mode or close the outdoor intake damper.\nRemember pets and other animals can be affected by wildfire smoke to and pay attention to any health symptoms if you have asthma, COPD, heart disease, or are pregnant. Get medical help if you need it."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Wildfire_During",
+      "dialog_node": "node_10_1594735993970",
+      "previous_sibling": "node_8_1594736587643"
+    },
+    {
+      "type": "standard",
+      "title": "#Frequently_Asked_Flood_Questions",
+      "output": {
+        "generic": [
+          {
+            "query": "",
+            "filter": "",
+            "query_type": "natural_language",
+            "response_type": "search_skill"
+          }
+        ]
+      },
+      "conditions": "#Frequently_Asked_Flood_Questions",
+      "dialog_node": "node_6_1588092223582",
+      "previous_sibling": "node_9_1588171145203"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Check out the Contact Center to view the emergency agencies you can call for help."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Emergency_Number",
+      "dialog_node": "node_8_1594737924202",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "- Know the flood risk in your area\n- Sign up for your community’s warning system and be ready to follow all emergency alerts\n- Learn and practice evacuation routes, shelter plans, and flash flood response\n- Gather supplies (e.g., medication, batteries, etc.) in case you have to leave immediately or lose services\n- Store valuables and important documents in a safe, dry place\n- Make plans on what to do with your animals and pets if you are required to evacuate"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Flood_Before",
+      "dialog_node": "node_10_1584231342659",
+      "previous_sibling": "node_9_1584393013683"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello"
+              },
+              {
+                "text": "Hi"
+              },
+              {
+                "text": "Hey"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "conditions": "#General_Greetings",
+      "dialog_node": "node_4_1584218872946",
+      "previous_sibling": "node_6_1588092223582"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Flooding is a temporary overflow of water onto land that is normally dry. It results from rain, snow, coastal storms, storm surges, and overflows of dams and other water systems. Floods can cause outages, disrupt transportation, damage buildings, and create landslides."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Flood_About",
+      "dialog_node": "node_5_1584231112927",
+      "previous_sibling": "node_4_1584218872946"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Earthquakes cause tsunamis, landslides, catastrophic destruction of property and even ground failure that affects the soil."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Earthquake_Danger",
+      "dialog_node": "node_6_1594734083499",
+      "previous_sibling": "node_2_1594734564955"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "- Stay informed. Tune in to local authorities for information about evacuations and safety tips.\n- Have a plan for evacuation. Know where you will go during a natural disaster and how you will get there.\n- Keep emergency kits on hand. Stock kits with flashlights, batteries, first aid supplies, and important identification information.\n- Avoid unnecessary risks. Do not leave your home unless instructed to do so.\n- Go to the safest area in your home. During a flood, go to a higher floor. If a tornado is in the area, go to a basement or inner room on the bottom floor of your home."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Safety_Tips",
+      "dialog_node": "node_6_1594737736902",
+      "previous_sibling": "node_8_1594737924202"
+    },
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_4_1584218971201",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Yo bu se yo love of David's life"
+              },
+              {
+                "text": "Yo bu se yo, what can I do for David's love"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "conditions": "#Reply_Eni",
+      "dialog_node": "node_2_1594731762772",
+      "previous_sibling": "node_5_1594732585474"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "OK. See you later."
+              },
+              {
+                "text": "Take care"
+              },
+              {
+                "text": "Bye"
+              },
+              {
+                "text": "Stay safe"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "conditions": "#General_Ending",
+      "dialog_node": "node_4_1584218971201",
+      "previous_sibling": "node_8_1584231697399"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Never felt better! I'm at your service. "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Small_Talk",
+      "dialog_node": "node_9_1594737387588",
+      "previous_sibling": "node_6_1594737736902"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "It is important to stay informed with what is happening and to follow instructions given by emergency officials. If there is a flood warning, find safe shelter right away! Go to a safe location you previously identified. If told to evacuate, do so immediately. Do not walk, swim, or drive through flood waters. Failing to evacuate flooded areas or entering flood waters can result in injury or death. If trapped in a building, get to the highest level. Do not climb into a closed attic and go on the roof only if necessary."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Flood_During",
+      "dialog_node": "node_2_1584231537199",
+      "previous_sibling": "node_10_1584231342659"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Floods can cause outages, disrupt transportation, damage buildings, and create landslides."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Flood_Danger",
+      "dialog_node": "node_9_1584393013683",
+      "previous_sibling": "node_5_1584231112927"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Even though a flood warning may have been cancelled continue to stay informed and follow the directions of emergency officials. During clean up from a flood wear heavy gloves, boots, and other protective gear and be aware snakes and other animals that may be in your home. Also, do not touch electrical equipment if it is wet or if you are standing in water. And return home only when local authorities say it is safe."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Flood_After",
+      "dialog_node": "node_8_1584231697399",
+      "previous_sibling": "node_7_1584394345975"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I'm here to provide you with information and safety tips for natural disasters like floods, earthquakes and wildfires."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Chatbot_About",
+      "dialog_node": "node_6_1594737029683",
+      "previous_sibling": "node_9_1594737387588"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "You may need to evacuate the area damaged by the earthquake. By planning and practicing for evacuation, you will be better prepared to respond appropriately and efficiently to signs of danger or to directions by civil authorities."
+              },
+              {
+                "text": "- Stay alert for aftershocks. According to experts, aftershocks can continue for weeks, months, or even years. Typically, the larger the mainshock, the larger and more numerous the aftershocks and the longer they will continue.\n- Make sure you and your family are unharmed. If anyone is injured, provide first aid, as best you can and contact the authorities in case of medical emergency.\n- Monitor local news and radio for emergency information. Don’t use the phone unless it’s an emergency since you could tie up the lines needed for emergency response.\n- Stay away from beaches. Tsunamis sometimes hit after the ground has stopped shaking"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Earthquake_After",
+      "dialog_node": "node_1_1594733362751",
+      "previous_sibling": "node_6_1594734083499"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "A wildfire is uncontrolled fire in a forest, grassland, brushland, or land sown to crops. Interestingly, only 10 to 15 percent of wildfires occur on their own in nature (lightning can play a part, also sparks in droughts or dry weather). The other 85 to 90 percent result from human causes, including unattended camp and debris fires, discarded cigarettes, and arson."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Wildfire_About",
+      "dialog_node": "node_2_1594734564955",
+      "previous_sibling": "node_4_1594735091440"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello. I am a disaster resiliency virtual agent. I can help answer your questions about preparedness, survival, and recovery for natural disasters. How can I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "starter-kit-flood-dialog-skill",
+  "language": "en",
+  "description": ""
+}
