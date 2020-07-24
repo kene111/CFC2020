@@ -2,13 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import MapView, { Marker, Polyline } from 'react-native-maps';
 import { View, Text, StyleSheet, TextInput, Modal, TouchableOpacity, Keyboard, FlatList, Alert, SafeAreaView, Image } from 'react-native';
 
-import { Constants } from 'expo';
-
 import { decode } from "@mapbox/polyline";
 
 import * as Location from 'expo-location';
 import { AppLoading } from 'expo';
 
+import apiKeys from '../api-keys';
 import fetchFonts from '../ibm-fonts';
 
 import PageLayout from '../components/page-layout';
@@ -19,7 +18,7 @@ import { error } from 'react-native-gifted-chat/lib/utils';
 
 const getDirections = async (startLoc, destinationLoc) => {
     try {
-        const KEY = Constants.manifest.extra.directionsApiKey;
+        const KEY = apiKeys.directionsApiKey;
         let resp = await fetch(
             `https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc}&destination=${destinationLoc}&key=${KEY}`
         );
@@ -43,7 +42,7 @@ const getDirections = async (startLoc, destinationLoc) => {
 
 const getLatLng = async (destination) => {
     try {
-        const KEY = Constants.manifest.extra.geocoderApiKey;
+        const KEY = apiKeys.geocoderApiKey;
         let resp = await fetch (`https://maps.googleapis.com/maps/api/geocode/json?address=${destination}&key=${KEY}`, {
         method: 'GET',    
         headers: {
@@ -62,7 +61,7 @@ const getLatLng = async (destination) => {
 }
 const reverseGeocoder = async (userCoords) => {
     try {
-        const KEY = Constants.manifest.extra.geocoderApiKey;
+        const KEY = apiKeys.geocoderApiKey;
         let resp = await fetch (`https://maps.googleapis.com/maps/api/geocode/json?latlng=${userCoords.latitude},${userCoords.longitude}&key=${KEY}`, {
         method: 'GET',    
         headers: {
@@ -78,7 +77,7 @@ const reverseGeocoder = async (userCoords) => {
 
 const getPlaces = async (currentPosition, place) => {
     try {
-        const KEY = Constants.manifest.extra.placesApiKey;
+        const KEY = apiKeys.placesApiKey;
         let resp = await fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${currentPosition}&radius=2000&types=${place}&key=${KEY}`, {
             method: 'GET',
             headers: {
@@ -96,7 +95,16 @@ const CustomMarker = props => {
     return (
         <View style={styles.markerStyle}>
             <Text style={styles.markerText}>{props.distance}</Text>
-            <Text styles={styles.markerText}>{props.duration}</Text>
+            <Text style={styles.markerText}>{props.duration}</Text>
+        </View>
+    )
+}
+
+const FlipMarker = props => {
+    return (
+        <View style={styles.markerStyle}>
+            <Text style={styles.markerText}>Disaster reported at</Text>
+            <Text style={styles.markerText}>{props.vicinity}</Text>
         </View>
     )
 }
@@ -113,6 +121,12 @@ export const Map = ({ navigation }) => {
     const [inputScreenText, setInputScreenText] = useState('Select Destination');
     const [distanceTime, setDistanceTime] = useState({});
     const [disasterLatLng, setDisasterLatLng] = useState([]);
+    const [markerFlip0, setMarkerFlip0] = useState(false);
+    const [markerFlip1, setMarkerFlip1] = useState(false);
+    const [markerFlip2, setMarkerFlip2] = useState(false);
+    const [markerFlip3, setMarkerFlip3] = useState(false);
+    const [markerFlip4, setMarkerFlip4] = useState(false);
+    
 
     const _map = useRef(null);
 
@@ -163,12 +177,14 @@ export const Map = ({ navigation }) => {
             if (status != 'granted') {
                 setErrorMsg('Permission to access location was denied. Please go to settings and enable location for the application');
             }
-            let myLocation = await Location.getCurrentPositionAsync({});
-            setLocation({
-                latitude: myLocation.coords.latitude,
-                longitude: myLocation.coords.longitude
-            });
-            const interval = setInterval(() => {getDisasterLocations(myLocation.coords.latitude, myLocation.coords.longitude)}, 3000);
+            const interval = setInterval(async () => {
+                let myLocation = await Location.getCurrentPositionAsync({});
+                setLocation({
+                    latitude: myLocation.coords.latitude,
+                    longitude: myLocation.coords.longitude
+                });
+                await getDisasterLocations(myLocation.coords.latitude, myLocation.coords.longitude);
+            }, 3000);
             return () => clearInterval(interval)
         })();
 
@@ -349,18 +365,76 @@ export const Map = ({ navigation }) => {
                     }}
                     showsUserLocation={true}
                 >
-                    {disasterLatLng[0] && 
+                    {disasterLatLng[0] && !markerFlip0 &&
                         <Marker 
                             coordinate={{latitude: parseFloat(disasterLatLng[0].latitudeField), longitude: parseFloat(disasterLatLng[0].longitudeField)}}
-                            onPress={() => {console.log('Pressed Marker')}}
-                        >
-                        <Image source={require('../images/disaster-marker.png')} style={{height: 35, width: 35}} />
+                            onPress={() => {setMarkerFlip0(true)}}
+                        />
+                    }
+                    {disasterLatLng[0] && markerFlip0 &&
+                        <Marker 
+                            coordinate={{latitude: parseFloat(disasterLatLng[0].latitudeField), longitude: parseFloat(disasterLatLng[0].longitudeField)}}
+                            onPress={() => {setMarkerFlip0(false)}}
+                        >    
+                            <FlipMarker vicinity={disasterLatLng[0].addressField} />
                         </Marker>
                     }
-                    {disasterLatLng[1] && <Marker coordinate={{latitude: parseFloat(disasterLatLng[1].latitudeField), longitude: parseFloat(disasterLatLng[1].longitudeField)}} />}
-                    {disasterLatLng[2] && <Marker coordinate={{latitude: parseFloat(disasterLatLng[2].latitudeField), longitude: parseFloat(disasterLatLng[2].longitudeField)}} />}
-                    {disasterLatLng[3] && <Marker coordinate={{latitude: parseFloat(disasterLatLng[3].latitudeField), longitude: parseFloat(disasterLatLng[3].longitudeField)}} />}
-                    {disasterLatLng[4] && <Marker coordinate={{latitude: parseFloat(disasterLatLng[4].latitudeField), longitude: parseFloat(disasterLatLng[4].longitudeField)}} />}
+                    {disasterLatLng[1] && !markerFlip1 &&
+                        <Marker 
+                            coordinate={{latitude: parseFloat(disasterLatLng[1].latitudeField), longitude: parseFloat(disasterLatLng[1].longitudeField)}}
+                            onPress={() => {setMarkerFlip1(true)}}
+                        />
+                    }
+                    {disasterLatLng[1] && markerFlip1 &&
+                        <Marker 
+                            coordinate={{latitude: parseFloat(disasterLatLng[1].latitudeField), longitude: parseFloat(disasterLatLng[1].longitudeField)}}
+                            onPress={() => {setMarkerFlip1(false)}}
+                        >    
+                            <FlipMarker vicinity={disasterLatLng[1].addressField} />
+                        </Marker>
+                    }
+                    {disasterLatLng[2] && !markerFlip2 &&
+                        <Marker 
+                            coordinate={{latitude: parseFloat(disasterLatLng[2].latitudeField), longitude: parseFloat(disasterLatLng[2].longitudeField)}}
+                            onPress={() => {setMarkerFlip2(true)}}
+                        />
+                    }
+                    {disasterLatLng[2] && markerFlip2 &&
+                        <Marker 
+                            coordinate={{latitude: parseFloat(disasterLatLng[2].latitudeField), longitude: parseFloat(disasterLatLng[2].longitudeField)}}
+                            onPress={() => {setMarkerFlip2(false)}}
+                        >    
+                            <FlipMarker vicinity={disasterLatLng[2].addressField} />
+                        </Marker>
+                    }
+                    {disasterLatLng[3] && !markerFlip3 &&
+                        <Marker 
+                            coordinate={{latitude: parseFloat(disasterLatLng[3].latitudeField), longitude: parseFloat(disasterLatLng[3].longitudeField)}}
+                            onPress={() => {setMarkerFlip3(true)}}
+                        />
+                    }
+                    {disasterLatLng[3] && markerFlip3 &&
+                        <Marker 
+                            coordinate={{latitude: parseFloat(disasterLatLng[3].latitudeField), longitude: parseFloat(disasterLatLng[3].longitudeField)}}
+                            onPress={() => {setMarkerFlip3(false)}}
+                        >    
+                            <FlipMarker vicinity={disasterLatLng[3].addressField} />
+                        </Marker>
+                    }
+                    {disasterLatLng[4] && !markerFlip4 &&
+                        <Marker 
+                            coordinate={{latitude: parseFloat(disasterLatLng[4].latitudeField), longitude: parseFloat(disasterLatLng[4].longitudeField)}}
+                            onPress={() => {setMarkerFlip4(true)}}
+                        />
+                    }
+                    {disasterLatLng[4] && markerFlip4 &&
+                        <Marker 
+                            coordinate={{latitude: parseFloat(disasterLatLng[4].latitudeField), longitude: parseFloat(disasterLatLng[4].longitudeField)}}
+                            onPress={() => {setMarkerFlip4(false)}}
+                        >    
+                            <FlipMarker vicinity={disasterLatLng[4].addressField} />
+                        </Marker>
+                    }
                     {destinationLngLat && distanceTime !== {} && 
                         <Marker coordinate={destinationLngLat}>
                             <CustomMarker distance={distanceTime.distance} duration={distanceTime.duration} />
@@ -632,7 +706,7 @@ const styles = StyleSheet.create({
         borderRadius: 10
     },
     markerText: {
-        fontSize: 8,
+        fontSize: 10,
         fontFamily: 'IBMPlexSans-Light'
 
     }

@@ -76,14 +76,16 @@ const Predictions = ({ navigation }) => {
                         {!volcanoDates ? <ActivityLoading title="Loading Volcano Predictions" /> : (
                             volcanoDates.length === 0 ? <Text style={styles.listText}>No Probable Volcano Eruptions Predicted</Text> : (
                                 <View style={{alignItems: 'center', justifyContent: 'center'}}>
-                                    <View style={{marginTop: 10, marginBottom:10}}>
+                                    <View style={{marginTop: 15, marginBottom:15}}>
                                         <Text style={styles.listText}>Dates Volcano Eruptions are predicted to have a high possibility of occuring</Text>
                                     </View>
                                     <FlatList
                                         data={volcanoDates}
                                         KeyExtractor={({ id }, index) => id}
                                         renderItem={ ({ item }) => (
-                                            <Text style={styles.listText}>{item.date}</Text>
+                                            <View style={styles.dateContainer}>
+                                                <Text style={styles.dateText}>{item.date}</Text>
+                                            </View>
                                         )}
                                     />
                                 </View>
@@ -99,14 +101,16 @@ const Predictions = ({ navigation }) => {
                         {!volcanoDates ? <ActivityLoading title="Loading Earthquake Predictions" /> : (
                             volcanoDates.length === 0 ? <Text style={styles.listText}>No Probable Earthquakes Predicted</Text> : (
                                 <View style={{alignItems: 'center', justifyContent: 'center'}}>
-                                    <View style={{marginTop: 10, marginBottom:10}}>
+                                    <View style={{marginTop: 15, marginBottom:15}}>
                                         <Text style={styles.listText}>Dates Earthquakes are predicted to have a high possibility of occuring</Text>
                                     </View>
                                     <FlatList
                                         data={earthquakeDates}
                                         KeyExtractor={({ id }, index) => id}
                                         renderItem={ ({ item }) => (
-                                            <Text style={styles.listText}>{item.date}</Text>
+                                            <View style={styles.dateContainer}>
+                                                <Text style={styles.dateText}>{item.date}</Text>
+                                            </View>
                                         )}
                                     />
                                 </View>
@@ -161,10 +165,22 @@ const styles = StyleSheet.create({
         borderRadius: 10
     },
     listText: {
-        fontFamily: 'IBMPlexSans-Light',
+        fontFamily: 'IBMPlexSans-Medium',
         fontSize: 15,
         textAlign: 'center',
-        color: 'red'
+        color: 'black'
+    },
+        dateText: {
+        fontFamily: 'IBMPlexSans-Bold',
+        fontSize: 15,
+        textAlign: 'center',
+        color: 'white'
+    },
+    dateContainer: {
+        flex: 1,
+        backgroundColor: 'red',
+        padding: 10,
+        borderRadius: 10
     }
 });
 
