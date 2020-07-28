@@ -1,6 +1,6 @@
 # Natural Disaster Informant and Assistant (N.D.I.A)
 
-[![License](https://img.shields.io/badge/License-Apache2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0) [![N.D.I.A Website](https://img.shields.io/badge/View-Website-blue)](https://n-dia.herokuapp.com/ndia/)
+[![License](https://img.shields.io/badge/License-Apache2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0) [![N.D.I.A Website](https://img.shields.io/badge/View-Website-blue)](https://n-dia.herokuapp.com/chatbot/ndia/)
 
 GitHub repository for Project N.D.I.A (Natural Disaster Informant and Assistant), our proposed solution for the Call for Code 2020 Competition on halting the effects of Climate Change.
 
@@ -41,11 +41,11 @@ A Natural Disaster Informant and Assistant (N.D.I.A) possessing attributes to he
 
 ## The architecture
 
-### Native Application
+### Native Application Architecture
 
 ![N.D.I.A Native Application](images/app-architecture.jpg)
 
-### Web Platform
+### Web Platform Architecture
 
 ![N.D.I.A Web Platform](images/web-platform-architecture.jpg)
 
@@ -104,7 +104,7 @@ For more information on getting started with Expo, you can visit [their website]
 
 ## Live demo
 
-You can find a running system to test at [callforcode.mybluemix.net](https://n-dia.herokuapp.com/ndia/).
+You can find a running system to test at [n-dia.herokuapp.com/chatbot/ndia/](https://n-dia.herokuapp.com/chatbot/ndia/).
 
 For a live demo of the native application, download Expo Client on your mobile phone then open [expo.io/@daveeyd/cfc-mobile-app](https://expo.io/@daveeyd/cfc-mobile-app). The easiest option is the "Open project using Expo" option, which will automatically redirect you to the Expo app downloaded and show a preview of the app. Alternatively, you can scan the QR Code from the webpage on the Expo app to open the project.
 
