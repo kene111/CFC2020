@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Text, FlatList } from 'react-native';
+import { View, StyleSheet, Text, FlatList, Image } from 'react-native';
 
 import PageLayout from '../components/page-layout';
 import ActivityLoading from '../components/activity-loading';
@@ -67,56 +67,66 @@ const Predictions = ({ navigation }) => {
             nav={navigation}    
         >
             <View style={styles.body}>
-                <View style={styles.outerContainer}>
-                    <View style={styles.innerContainer}>
-                        <View style={styles.heading}>
-                            <Text style={styles.name}>Volcano Eruption Predictions</Text>
-                        </View>
-                        <View style={styles.list}>
-                        {!volcanoDates ? <ActivityLoading title="Loading Volcano Predictions" /> : (
-                            volcanoDates.length === 0 ? <Text style={styles.listText}>No Probable Volcano Eruptions Predicted</Text> : (
-                                <View style={{alignItems: 'center', justifyContent: 'center'}}>
-                                    <View style={{marginTop: 15, marginBottom:15}}>
-                                        <Text style={styles.listText}>Dates Volcano Eruptions are predicted to have a high possibility of occuring</Text>
+                <View style={styles.predictionsOuterContainer}>
+                    <View style={styles.predictionsInnerContainer}>
+                        <View style={styles.predictionsList}>
+                            <View style={styles.predictionImageContainer}>
+                                <Image 
+                                    style={styles.predictionImageStyle}
+                                    source={require('../images/volcano.png')}
+                                />
+                            </View>
+                            <View style={{flex: 2}}>
+                            {!volcanoDates ? <ActivityLoading title="Loading Volcano Predictions" /> : (
+                                volcanoDates.length === 0 ? <Text style={styles.listText}>No Future Volcano Eruptions Predicted for your location. Please ensure to keep in contact with your local news for any information.</Text> : (
+                                    <View style={{alignItems: 'center', justifyContent: 'center'}}>
+                                        <View style={{marginTop: 15, marginBottom:15}}>
+                                            <Text style={styles.predictionsListText}>Predicted Volcano Eruptions for your location</Text>
+                                        </View>
+                                        <FlatList
+                                            data={volcanoDates}
+                                            KeyExtractor={({ id }, index) => id}
+                                            renderItem={ ({ item }) => (
+                                                <View style={styles.dateContainer}>
+                                                    <Text style={styles.dateText}>{item.date}</Text>
+                                                </View>
+                                            )}
+                                        />
                                     </View>
-                                    <FlatList
-                                        data={volcanoDates}
-                                        KeyExtractor={({ id }, index) => id}
-                                        renderItem={ ({ item }) => (
-                                            <View style={styles.dateContainer}>
-                                                <Text style={styles.dateText}>{item.date}</Text>
-                                            </View>
-                                        )}
-                                    />
-                                </View>
-                            )
-                        )}
-                        </View>
+                                )
+                            )}
+                            </View>
+                        </View>          
                     </View>
-                    <View style={styles.innerContainer}>
-                        <View style={styles.heading}>
-                            <Text style={styles.name}>Earthquake Predictions</Text>
-                        </View>
-                        <View style={styles.list}>
-                        {!volcanoDates ? <ActivityLoading title="Loading Earthquake Predictions" /> : (
-                            volcanoDates.length === 0 ? <Text style={styles.listText}>No Probable Earthquakes Predicted</Text> : (
-                                <View style={{alignItems: 'center', justifyContent: 'center'}}>
-                                    <View style={{marginTop: 15, marginBottom:15}}>
-                                        <Text style={styles.listText}>Dates Earthquakes are predicted to have a high possibility of occuring</Text>
+                    <View style={styles.predictionsInnerContainer}>
+                        <View style={styles.predictionsList}>
+                            <View style={styles.predictionImageContainer}>
+                                <Image 
+                                    style={styles.predictionImageStyle}
+                                    source={require('../images/earthquake.png')}
+                                />
+                            </View>
+                            <View style={{flex: 2}}>
+                            {!earthquakeDates ? <ActivityLoading title="Loading Earthquake Predictions" /> : (
+                                earthquakeDates.length === 0 ? <Text style={styles.listText}>No Future Earthquakes Predicted for your location. Please ensure to keep in contact with your local news for any information.</Text> : (
+                                    <View style={{alignItems: 'center', justifyContent: 'center'}}>
+                                        <View style={{marginTop: 15, marginBottom:15}}>
+                                            <Text style={styles.predictionsListText}>Predicted Earthquakes for your location</Text>
+                                        </View>
+                                        <FlatList
+                                            data={earthquakeDates}
+                                            KeyExtractor={({ id }, index) => id}
+                                            renderItem={ ({ item }) => (
+                                                <View style={styles.dateContainer}>
+                                                    <Text style={styles.dateText}>{item.date}</Text>
+                                                </View>
+                                            )}
+                                        />
                                     </View>
-                                    <FlatList
-                                        data={earthquakeDates}
-                                        KeyExtractor={({ id }, index) => id}
-                                        renderItem={ ({ item }) => (
-                                            <View style={styles.dateContainer}>
-                                                <Text style={styles.dateText}>{item.date}</Text>
-                                            </View>
-                                        )}
-                                    />
-                                </View>
-                            )
-                        )}
-                        </View>
+                                )
+                            )}
+                            </View>
+                        </View>          
                     </View>
                 </View>
             </View>
@@ -127,32 +137,32 @@ const Predictions = ({ navigation }) => {
 const styles = StyleSheet.create({
     body: {
         flex: 1,
-        padding: 10
+        padding: 5
     },
-    outerContainer: {
+    predictionsOuterContainer: {
         flex: 1,
-        padding: 10 
+        padding: 15,
+        backgroundColor: '#F1F0EE'
     },
-    innerContainer: {
+    predictionsInnerContainer: {
         flexDirection: 'row',
         flex: 1,
         marginBottom: 20
     },
-    heading: {
-        width: '35%',
-        height: '100%',
-        padding: 10,
-        alignItems: 'center',
-        justifyContent: 'center'
+    predictionImageContainer: {
+        flex: 1,
+        padding: 5
     },
-    name: {
-        fontFamily: 'IBMPlexSans-Medium',
-        fontSize: 16,
-        color: 'blue'
-    },
-    list: {
+    predictionImageStyle: {
         height: '100%',
-        width: '65%',
+        width: '100%',
+        resizeMode: 'contain'
+    
+    },
+    predictionsList: {
+        flexDirection: 'row',
+        height: '100%',
+        width: '100%',
         backgroundColor: 'white',
         borderColor: 'white',
         alignItems: 'center',
@@ -164,13 +174,14 @@ const styles = StyleSheet.create({
         elevation: 5,
         borderRadius: 10
     },
-    listText: {
+    predictionsListText: {
         fontFamily: 'IBMPlexSans-Medium',
         fontSize: 15,
         textAlign: 'center',
-        color: 'black'
+        color: 'black',
+        padding: 5
     },
-        dateText: {
+    dateText: {
         fontFamily: 'IBMPlexSans-Bold',
         fontSize: 15,
         textAlign: 'center',
@@ -178,7 +189,7 @@ const styles = StyleSheet.create({
     },
     dateContainer: {
         flex: 1,
-        backgroundColor: 'red',
+        backgroundColor: '#800000',
         padding: 10,
         borderRadius: 10
     }

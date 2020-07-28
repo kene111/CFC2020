@@ -86,13 +86,11 @@ const styles = StyleSheet.create({
         shadowColor: 'black',
         shadowOffset: {width: 0, height: 5},
         shadowOpacity: 0.3,
-        elevation: 5,
-        borderBottomLeftRadius: 5,
-        borderBottomRightRadius: 5
+        elevation: 5
     },
     headerStyle: {
         fontFamily: 'IBMPlexSans-Medium',
-        fontSize: 19,
+        fontSize: 18,
         color: '#323232',
         alignItems: 'center',
         justifyContent: 'center'

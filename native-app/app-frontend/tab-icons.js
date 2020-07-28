@@ -5,8 +5,8 @@ export const HomeTabIcon = () => (
     <FontAwesome name='home' color='#000' size={24} />
 );
 
-export const NewsTabIcon = () => (
-    <FontAwesome name='newspaper-o' color='#000' size={21} />
+export const NewsTabIcon = props => (
+    <FontAwesome name='newspaper-o' color={props.color} size={21} />
 );
 
 export const TweetsTabIcon = () => (
@@ -53,8 +53,8 @@ export const MapExitIcon = () => (
     <MaterialCommunityIcons name='window-close' size={20} color='black' />
 );
 
-export const PredictionsTabIcon = () => (
-    <AntDesign name='linechart' color='#000' size={24} />
+export const PredictionsTabIcon = props => (
+    <AntDesign name='linechart' color={props.color} size={24} />
 );
 
 export const GitHubIcon = () => (

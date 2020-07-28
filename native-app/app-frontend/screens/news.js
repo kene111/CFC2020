@@ -64,7 +64,8 @@ export const News = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     body: {
-        marginTop: 5
+        marginTop: 5,
+        backgroundColor: 'white'
     }
 });
 

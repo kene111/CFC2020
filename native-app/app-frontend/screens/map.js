@@ -44,7 +44,7 @@ const getLatLng = async (destination) => {
     try {
         const KEY = apiKeys.geocoderApiKey;
         let resp = await fetch (`https://maps.googleapis.com/maps/api/geocode/json?address=${destination}&key=${KEY}`, {
-        method: 'GET',    
+        method: 'GET',
         headers: {
                 'Content-Type': 'application/json'
             }
@@ -63,7 +63,7 @@ const reverseGeocoder = async (userCoords) => {
     try {
         const KEY = apiKeys.geocoderApiKey;
         let resp = await fetch (`https://maps.googleapis.com/maps/api/geocode/json?latlng=${userCoords.latitude},${userCoords.longitude}&key=${KEY}`, {
-        method: 'GET',    
+        method: 'GET',
         headers: {
                 'Content-Type': 'application/json'
             }
@@ -126,24 +126,14 @@ export const Map = ({ navigation }) => {
     const [markerFlip2, setMarkerFlip2] = useState(false);
     const [markerFlip3, setMarkerFlip3] = useState(false);
     const [markerFlip4, setMarkerFlip4] = useState(false);
-    
+
 
     const _map = useRef(null);
-
-    const Berlin = {
-        latitude: 6.46391,
-        longitude: 3.2824227
-    };
-
-    const Frankfurt = {
-        latitude: 6.5161,
-        longitude: 3.3886
-    }
 
     const arrowBackHandler = () => {
         setIsSearchhMode(false);
         if(destination == '') {
-            setInputScreenText('Select Destination')            
+            setInputScreenText('Select Destination')
         }
     }
 
@@ -196,15 +186,26 @@ export const Map = ({ navigation }) => {
         } else {
             setIsSearchhMode(false);
             let resp = await getLatLng(destination);
-            setDestinationLngLat(resp);
+            if(resp) {
             console.log(JSON.stringify(resp));
             getDirections(`${location.latitude},${location.longitude}`, `${resp.latitude},${resp.longitude}`)
                 .then(response => {
+                    if(response.respCoords && (response.respCoords).length > 0) {
                     setCoords(response.respCoords);
                     setDistanceTime(response.distTime);
+                    setDestinationLngLat(resp);
+                    } else {
+                        setCoords([]);
+                        setDistanceTime({});
+                        setInputScreenText(`Couldn't find, add more information`)
+                    }
                 })
                 .catch(err => console.log("Something went wrong"));
+            } else {
+                setInputScreenText(`Couldn't find, add more information`)
             }
+        }
+
     };
 
     const findHospitalHandler = async () => {
@@ -225,16 +226,16 @@ export const Map = ({ navigation }) => {
         setHospitalList(hospitals);
     };
 
-    const onPressHospitalHandler = async (hospital) => {   
+    const onPressHospitalHandler = async (hospital) => {
         setIsSearchhMode(false);
-        
+
         await getDirections(`${location.latitude},${location.longitude}`, `${hospital.latLng.latitude},${hospital.latLng.longitude}`)
             .then(response => {
                 setCoords(response.respCoords);
                 setDistanceTime(response.distTime);
             })
             .catch(err => console.log("Something went wrong"));
-        
+
         setDestinationLngLat(hospital.latLng);
         setDestination(hospital.name);
         setInputScreenText(hospital.name);
@@ -258,7 +259,7 @@ export const Map = ({ navigation }) => {
                             {
                                 text: 'Close',
                                 onPress: () => {},
-                                style: 'cancel' 
+                                style: 'cancel'
 
                             }
                         ],
@@ -272,7 +273,7 @@ export const Map = ({ navigation }) => {
                             {
                                 text: 'Cancel',
                                 onPress: () => {},
-                                style: 'cancel' 
+                                style: 'cancel'
 
                             },
                             {
@@ -286,7 +287,7 @@ export const Map = ({ navigation }) => {
                 }
             })
             .catch(err => console.error(err))
-        
+
     }
 
     const onPressMessageAlertHandler = () => {
@@ -316,24 +317,6 @@ export const Map = ({ navigation }) => {
         setDistanceTime({});
     }
 
-    const MapFitter = () => {
-        if(!destinationLngLat) {
-            return ;
-        } else {
-            _map.fitToCoordinates(
-                [location, destinationLngLat], 
-                {
-                    edgePadding: {
-                        top: 50,
-                        right: 50,
-                        bottom: 50,
-                        left: 50
-                    }
-                }
-            )
-        }
-    }
-
     let text = 'Loading Maps';
     if (errorMsg) {
         text = errorMsg;
@@ -345,7 +328,7 @@ export const Map = ({ navigation }) => {
 
     if (!location) {
         rend = (
-            <LoadingPage 
+            <LoadingPage
                 image={require('../images/google-maps-side-logo.jpg')}
                 loadingText={text}
             />
@@ -353,7 +336,7 @@ export const Map = ({ navigation }) => {
     } else {
         rend = (
             <View style={styles.container}>
-                <MapView 
+                <MapView
                     ref={_map}
                     provider={MapView.PROVIDER_GOOGLE}
                     style={styles.mapStyle}
@@ -366,83 +349,83 @@ export const Map = ({ navigation }) => {
                     showsUserLocation={true}
                 >
                     {disasterLatLng[0] && !markerFlip0 &&
-                        <Marker 
+                        <Marker
                             coordinate={{latitude: parseFloat(disasterLatLng[0].latitudeField), longitude: parseFloat(disasterLatLng[0].longitudeField)}}
                             onPress={() => {setMarkerFlip0(true)}}
                         />
                     }
                     {disasterLatLng[0] && markerFlip0 &&
-                        <Marker 
+                        <Marker
                             coordinate={{latitude: parseFloat(disasterLatLng[0].latitudeField), longitude: parseFloat(disasterLatLng[0].longitudeField)}}
                             onPress={() => {setMarkerFlip0(false)}}
-                        >    
+                        >
                             <FlipMarker vicinity={disasterLatLng[0].addressField} />
                         </Marker>
                     }
                     {disasterLatLng[1] && !markerFlip1 &&
-                        <Marker 
+                        <Marker
                             coordinate={{latitude: parseFloat(disasterLatLng[1].latitudeField), longitude: parseFloat(disasterLatLng[1].longitudeField)}}
                             onPress={() => {setMarkerFlip1(true)}}
                         />
                     }
                     {disasterLatLng[1] && markerFlip1 &&
-                        <Marker 
+                        <Marker
                             coordinate={{latitude: parseFloat(disasterLatLng[1].latitudeField), longitude: parseFloat(disasterLatLng[1].longitudeField)}}
                             onPress={() => {setMarkerFlip1(false)}}
-                        >    
+                        >
                             <FlipMarker vicinity={disasterLatLng[1].addressField} />
                         </Marker>
                     }
                     {disasterLatLng[2] && !markerFlip2 &&
-                        <Marker 
+                        <Marker
                             coordinate={{latitude: parseFloat(disasterLatLng[2].latitudeField), longitude: parseFloat(disasterLatLng[2].longitudeField)}}
                             onPress={() => {setMarkerFlip2(true)}}
                         />
                     }
                     {disasterLatLng[2] && markerFlip2 &&
-                        <Marker 
+                        <Marker
                             coordinate={{latitude: parseFloat(disasterLatLng[2].latitudeField), longitude: parseFloat(disasterLatLng[2].longitudeField)}}
                             onPress={() => {setMarkerFlip2(false)}}
-                        >    
+                        >
                             <FlipMarker vicinity={disasterLatLng[2].addressField} />
                         </Marker>
                     }
                     {disasterLatLng[3] && !markerFlip3 &&
-                        <Marker 
+                        <Marker
                             coordinate={{latitude: parseFloat(disasterLatLng[3].latitudeField), longitude: parseFloat(disasterLatLng[3].longitudeField)}}
                             onPress={() => {setMarkerFlip3(true)}}
                         />
                     }
                     {disasterLatLng[3] && markerFlip3 &&
-                        <Marker 
+                        <Marker
                             coordinate={{latitude: parseFloat(disasterLatLng[3].latitudeField), longitude: parseFloat(disasterLatLng[3].longitudeField)}}
                             onPress={() => {setMarkerFlip3(false)}}
-                        >    
+                        >
                             <FlipMarker vicinity={disasterLatLng[3].addressField} />
                         </Marker>
                     }
                     {disasterLatLng[4] && !markerFlip4 &&
-                        <Marker 
+                        <Marker
                             coordinate={{latitude: parseFloat(disasterLatLng[4].latitudeField), longitude: parseFloat(disasterLatLng[4].longitudeField)}}
                             onPress={() => {setMarkerFlip4(true)}}
                         />
                     }
                     {disasterLatLng[4] && markerFlip4 &&
-                        <Marker 
+                        <Marker
                             coordinate={{latitude: parseFloat(disasterLatLng[4].latitudeField), longitude: parseFloat(disasterLatLng[4].longitudeField)}}
                             onPress={() => {setMarkerFlip4(false)}}
-                        >    
+                        >
                             <FlipMarker vicinity={disasterLatLng[4].addressField} />
                         </Marker>
                     }
-                    {destinationLngLat && distanceTime !== {} && 
+                    {destinationLngLat && distanceTime !== {} &&
                         <Marker coordinate={destinationLngLat}>
                             <CustomMarker distance={distanceTime.distance} duration={distanceTime.duration} />
                         </Marker>
                     }
-                    {coords.length > 0 && <Polyline coordinates={coords} strokeWidth={3} />}
+                    {coords && coords.length > 0 && <Polyline coordinates={coords} strokeWidth={3} />}
                 </MapView>
-                <TouchableOpacity style={styles.inputContainer} onPress={onFocusHandler}>    
+                <TouchableOpacity style={styles.inputContainer} onPress={onFocusHandler}>
                     <Text style={styles.placeholderStyle}>{inputScreenText}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.exitIcon} activeOpacity={0.9} onPress={onPressExitHandler}>
@@ -467,7 +450,7 @@ export const Map = ({ navigation }) => {
     };
 
     return (
-        <PageLayout 
+        <PageLayout
             header='Get Assistance'
             isImage={true}
             imageSource= {require('../images/google-maps-opening-logo.jpg')}
@@ -523,7 +506,7 @@ export const Map = ({ navigation }) => {
                                         data={hospitalList}
                                         KeyExtractor={({ id }, index) => id}
                                         renderItem={ ({ item }) => (
-                                            <HospitalComponent 
+                                            <HospitalComponent
                                                 name={item.name}
                                                 vicinity={item.vicinity}
                                                 onPressHospital={onPressHospitalHandler.bind(this, item)}
@@ -537,9 +520,9 @@ export const Map = ({ navigation }) => {
             </Modal>
             {rend}
         </PageLayout>
-        
+
     );
-    
+
 }
 
 const styles = StyleSheet.create({
@@ -557,7 +540,7 @@ const styles = StyleSheet.create({
         width: "85%",
         marginTop: 7,
         position: 'absolute',
-        top: 10, 
+        top: 10,
         backgroundColor: 'white',
         borderColor: 'white',
         alignItems: 'flex-start',

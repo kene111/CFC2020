@@ -13,9 +13,6 @@ import News from './screens/news';
 import Tweets from './screens/tweets';
 import About from './screens/about';
 import Contact from './screens/contact';
-import sChat from './screens/chat2';
-import Tester from './screens/tester';
-import MapsHere from './screens/maps-here';
 import Predictions from './screens/predictions';
 
 import { HomeIcon, ChatIcon, MapIcon } from './images/svg-icons.js';

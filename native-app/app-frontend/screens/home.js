@@ -2,13 +2,10 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { 
     View,
     Text, 
-    StyleSheet, 
-    ScrollView,
-    Image, 
-    Linking, 
+    StyleSheet,
+    Image,
     TouchableOpacity,
     FlatList,
-    ActivityIndicator,
     RefreshControl
 } from 'react-native';
 
@@ -19,11 +16,13 @@ import ActivityLoading from '../components/activity-loading';
 import { AppLoading } from 'expo';
 import * as Location from 'expo-location';
 
+import apiKeys from '../api-keys';
+
 import fetchFonts from '../ibm-fonts';
 
 const reverseGeocoder = async (userCoords) => {
     try {
-        const KEY = "AIzaSyApZA2kzNzsYLa2IeGkOIB-XA87l5hz-vw"
+        const KEY = apiKeys.geocoderApiKey;
         let resp = await fetch (`https://maps.googleapis.com/maps/api/geocode/json?latlng=${userCoords.latitude},${userCoords.longitude}&key=${KEY}`, {
         method: 'GET',    
         headers: {

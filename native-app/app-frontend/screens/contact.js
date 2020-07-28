@@ -54,8 +54,9 @@ export const Contact = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     listStyle: {
-        marginTop: 40,
-        paddingLeft: 30
+        marginTop: 30,
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 });
 

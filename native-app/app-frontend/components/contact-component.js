@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Text, Image, TouchableOpacity, Linking } from 'react-native';
+import { View, StyleSheet, Text, Image, TouchableOpacity, Linking, Dimensions } from 'react-native';
 
 import { PhoneIcon } from '../tab-icons';
 
 import { AppLoading } from 'expo';
 
 import fetchFonts from '../ibm-fonts';
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 const ContactComponent = props => {
     const [fontLoaded, setFontLoaded] = useState(false);
@@ -44,8 +47,8 @@ const ContactComponent = props => {
 const styles = StyleSheet.create({
     container: {
         padding: 10,
-        width: 300,
-        height: 150,
+        width: windowWidth - 30,
+        height: Math.floor(windowHeight * 0.25),
         flexDirection: 'row',
         backgroundColor: 'white',
         borderColor: 'white',
