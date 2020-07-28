@@ -1,6 +1,6 @@
 # Natural Disaster Informant and Assistant (N.D.I.A)
 
-[![License](https://img.shields.io/badge/License-Apache2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0) [![N.D.I.A Website](https://img.shields.io/badge/View-Website-blue)](https://code-and-response.github.io/Project-Sample/)
+[![License](https://img.shields.io/badge/License-Apache2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0) [![N.D.I.A Website](https://img.shields.io/badge/View-Website-blue)](https://n-dia.herokuapp.com/ndia/)
 
 GitHub repository for Project N.D.I.A (Natural Disaster Informant and Assistant), our proposed solution for the Call for Code 2020 Competition on halting the effects of Climate Change.
 
@@ -41,13 +41,21 @@ A Natural Disaster Informant and Assistant (N.D.I.A) possessing attributes to he
 
 ## The architecture
 
+### Native Application
+
 ![N.D.I.A Native Application](images/app-architecture.jpg)
 
-1. The user launches the mobile app and has access to information on natural disasters happening not just in the user's country, but also all around the world using the News Now Platform and Twitter's Search API.
+### Web Platform
+
+![N.D.I.A Web Platform](images/web-platform-architecture.jpg)
+
+1. The user launches the web platform or mobile app and has access to information on natural disasters happening not just in the user's country, but also all around the world using the News Now Platform and Twitter's Search API.
 2. The user can ask questions to Watson Assistant and get answers to natural disaster planning and other recovery-related questions.
 3. The user can view natural disaster predictions over the next 21 days based from machine learning models that have been trained on previous natural disaster occurences so as to get a head-start in preparations.
 4. The user can seek immediate help by sending an e-mail for help or calling the provided natural disaster helplines in the contact center.
-5. The user can obtain geolocation data for which have been reported by other users to be affected by natural disasters so as to avoid these places as well as plot evacuation routes to places of their choice and even locate the nearest hospitals using Google Maps Platform.
+5. The user obtains geolocation data of locations which have been affected by natural disasters reported from other users so as to avoid these places. 
+6. The user is also able to plot evacuation routes to places of their choice and even locate the nearest hospitals using Google Maps Platform.
+7. On the website, users can subscribe to get e-mails on natural disasters as they are reported from other users.
 
 ## Long description
 
@@ -71,13 +79,24 @@ Before getting started, you'll need to have the following;
 ```bash
 npm install expo-cli --global
 ```
+* Google Maps Platform Account - Google provides very helpful APIs for projects involving maps. The project made use of Google's Geocoding, Places, Directions and Maps for JavaSript API. To create an account and be able to gain access to these APIs, [start here](https://cloud.google.com/maps-platform).
+
+* Twitter Developers Account - To get access to Twitter's Search API for getting tweets, register for a Twitter Developer Account and get your API credentials. You can find out more [here](https://developer.twitter.com/en/docs/tweets/search/api-reference/get-search-tweets).
 
 ## Running the tests
 
-To run the project, go to the native application's directory on your command line tool and enter
+Before running the project, the dependencies used need to be installed first. Simply go to the application frontend directory on your command line tool and enter
 
 ```bash
-expo start
+npm install
+```
+After some time, you will be indicated that all dependencies have been installed.
+Note: Ensure all versions of the dependencies are compatible with Expo.
+
+Then, still on the application frontend directory, run the project by entering
+
+```bash
+npm start
 ```
 The project is going to build on your machine's local host and can be viewed on both iOS and Android devices by simply following the instructions given on the command line.
 
@@ -85,7 +104,11 @@ For more information on getting started with Expo, you can visit [their website]
 
 ## Live demo
 
-You can find a running system to test at [callforcode.mybluemix.net](http://callforcode.mybluemix.net/)
+You can find a running system to test at [callforcode.mybluemix.net](https://n-dia.herokuapp.com/ndia/).
+
+For a live demo of the native application, download Expo Client on your mobile phone then open [expo.io/@daveeyd/cfc-mobile-app](https://expo.io/@daveeyd/cfc-mobile-app). The easiest option is the "Open project using Expo" option, which will automatically redirect you to the Expo app downloaded and show a preview of the app. Alternatively, you can scan the QR Code from the webpage on the Expo app to open the project.
+
+Because of restrictions from Apple when running applications on iOS, the native application is only accessible on Android. However, it can still be run on iOS using your LAN server by following the [test intructions](#running-the-tests).
 
 ## Built with
 
