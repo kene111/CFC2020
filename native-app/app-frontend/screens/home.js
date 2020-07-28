@@ -57,13 +57,13 @@ const Home = ({ navigation }) => {
             .then((response) => response.json())
             .then((responseJson) => {
                 setData(
-                    responseJson.filter(newsInfo => newsInfo.country == 'IN')
+                    responseJson.filter(newsInfo => newsInfo.country == shortName)
                 )
             })
             .catch((error) => console.error(error))
             .finally(() => {
-                setIsLoading(false)
-                setRefreshing(false)
+                setIsLoading(false);
+                setRefreshing(false);
             });
     }
 
@@ -84,8 +84,8 @@ const Home = ({ navigation }) => {
                 longitude: myLocation.coords.longitude
             };
             let countryInfo = await reverseGeocoder(coords);
-            setCountryName(countryInfo)
-            getCountryNews(countryInfo.countryShortName)
+            setCountryName(countryInfo);
+            getCountryNews(countryInfo.countryShortName);
 
         })();
 
@@ -129,7 +129,7 @@ const Home = ({ navigation }) => {
                             natural disasters happening around the globe
                         </Text>
                     </View>
-                    <View styles={styles.buttonGorup}>
+                    <View style={styles.buttonGorup}>
                         <TouchableOpacity onPress={() => navigation.navigate('About')}>
                             <Text style={styles.button}>Learn More about N.D.I.A here</Text>
                         </TouchableOpacity>
@@ -138,32 +138,49 @@ const Home = ({ navigation }) => {
                 <View style={styles.listOuter}>
                     <View style={styles.listContainer}>
                         {isLoading ? <ActivityLoading title="Loading Disaster News from your country" />: (
+                            data.length > 0 ?
                             <View>
-                            <View style={styles.newsHeaderContainer}>  
-                                <Text style={styles.newsHeader}>{`Disaster News from ${countryName.countryLongName}`}</Text>
-                                <View styles={styles.newsButtonGorup}>
-                                    <TouchableOpacity onPress={() => navigation.navigate('News')}>
-                                        <Text style={styles.newsButton}>More News</Text>
-                                    </TouchableOpacity>
+                                <View style={styles.newsHeaderContainer}>  
+                                    <Text style={styles.newsHeader}>{`Disaster News from ${countryName.countryLongName}`}</Text>
+                                    <View styles={styles.newsButtonGorup}>
+                                        <TouchableOpacity onPress={() => navigation.navigate('News')}>
+                                            <Text style={styles.newsButton}>More News</Text>
+                                        </TouchableOpacity>
+                                    </View>
                                 </View>
-                            </View>
-                            <FlatList
-                                data={data}
-                                KeyExtractor={({ id }, index) => id}
-                                renderItem={ ({ item }) => (
-                                    <NewsHeadline 
-                                        headline={item.headline}
-                                        link={item.link}
-                                        country={item.country}
-                                        time={item.time}
-                                        day={item.day}
-                                    />
-                                )}
-                                refreshControl={
-                                    <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-                                }
-                            />
-                            </View>
+                                <FlatList
+                                    data={data}
+                                    KeyExtractor={({ id }, index) => id}
+                                    renderItem={ ({ item }) => (
+                                        <NewsHeadline 
+                                            headline={item.headline}
+                                            link={item.link}
+                                            country={item.country}
+                                            time={item.time}
+                                            day={item.day}
+                                        />
+                                    )}
+                                    refreshControl={
+                                        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+                                    }
+                                />
+                            </View> : (
+                                <View style={{padding: 20}}>
+                                    <Text style={{...{textAlign: 'center'}, ...styles.newsHeader}}>No reported disaster news from your country</Text>
+                                    <View style={{flexDirection: 'row', marginTop: 10, alignItems: 'center', justifyContent: 'center'}}>
+                                        <View style={{...{padding: 10}, ...styles.buttonGorup}}>
+                                            <TouchableOpacity onPress={() => navigation.navigate('News')}>
+                                                <Text style={styles.button}>Global News</Text>
+                                            </TouchableOpacity>
+                                        </View>
+                                        <View style={{...{padding: 10}, ...styles.buttonGorup}}>
+                                            <TouchableOpacity onPress={onRefresh}>
+                                                <Text style={styles.button}>Refresh</Text>
+                                            </TouchableOpacity>
+                                        </View>
+                                    </View>    
+                                </View>
+                            )
                         )}
                     </View>
                 </View>

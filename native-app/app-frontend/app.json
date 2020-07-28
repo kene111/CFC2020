@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "cfc-mobile-app",
-    "slug": "cfc-mobile-app",
+    "name": "Project NDIA",
+    "slug": "project-ndia",
     "platforms": [
       "ios",
       "android",
@@ -11,7 +11,7 @@
     "orientation": "portrait",
     "icon": "./images/logo-512.png",
     "splash": {
-      "image": "./images/logo-512.png",
+      "image": "./images/2020-cfc-512.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -23,18 +23,12 @@
     ],
     "ios": {
       "bundleIdentifier": "com.cfcmobileapp.ndia",
-      "supportsTablet": true,
-      "config": {
-        "googleMapsApiKey": "AIzaSyBOprg2OJH9IbRAhbABGsCuhGe2k-2k7_A"
-      }
+      "supportsTablet": true
     },
     "android": {
-      "package": "com.cfcmobileapp.ndia",
-      "config": {
-        "googleMaps": {
-          "apiKey": "AIzaSyC1lqaagDyxM_XYD4JkJ4vdeZt_Ue-SYlI"
-        }
-      }
-    }
+      "package": "com.cfcmobileapp.ndia"
+    },
+    "description": "Native Application of Project N.D.I.A for the 2020 Call For Code Competition.",
+    "githubUrl": "https://github.com/kene111/CFC2020"
   }
 }

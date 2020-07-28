@@ -36,6 +36,7 @@ const Predictions = ({ navigation }) => {
     const [errorMsg, setErrorMsg] = useState(null);
     const [volcanoDates, setVolcanoDates] = useState(null);
     const [earthquakeDates, setEarthquakeDates] = useState(null);
+    const [tsunamiDates, setTsunamiDates] = useState(null);
 
     useEffect(() => {
         (async () => {
@@ -47,6 +48,7 @@ const Predictions = ({ navigation }) => {
             let predictedDisasterDates = await getPredictions(myLocation.coords.latitude, myLocation.coords.longitude);
             setVolcanoDates(predictedDisasterDates.predicted_volcano_dates);
             setEarthquakeDates(predictedDisasterDates.predicted_earthquake_dates);
+            setTsunamiDates(predictedDisasterDates.predicted_tsunami_dates);
         })();
 
     }, []);
@@ -128,6 +130,36 @@ const Predictions = ({ navigation }) => {
                             </View>
                         </View>          
                     </View>
+                    <View style={styles.predictionsInnerContainer}>
+                        <View style={styles.predictionsList}>
+                            <View style={styles.predictionImageContainer}>
+                                <Image 
+                                    style={styles.predictionImageStyle}
+                                    source={require('../images/tsunami.png')}
+                                />
+                            </View>
+                            <View style={{flex: 2}}>
+                            {!tsunamiDates ? <ActivityLoading title="Loading Tsunami Predictions" /> : (
+                                tsunamiDates.length === 0 ? <Text style={styles.listText}>No Future Tsunamis Predicted for your location. Please ensure to keep in contact with your local news for any information.</Text> : (
+                                    <View style={{alignItems: 'center', justifyContent: 'center'}}>
+                                        <View style={{marginTop: 15, marginBottom:15}}>
+                                            <Text style={styles.predictionsListText}>Predicted Tsunamis for your location</Text>
+                                        </View>
+                                        <FlatList
+                                            data={tsunamiDates}
+                                            KeyExtractor={({ id }, index) => id}
+                                            renderItem={ ({ item }) => (
+                                                <View style={styles.dateContainer}>
+                                                    <Text style={styles.dateText}>{item.date}</Text>
+                                                </View>
+                                            )}
+                                        />
+                                    </View>
+                                )
+                            )}
+                            </View>
+                        </View>          
+                    </View>
                 </View>
             </View>
         </PageLayout>
@@ -176,14 +208,14 @@ const styles = StyleSheet.create({
     },
     predictionsListText: {
         fontFamily: 'IBMPlexSans-Medium',
-        fontSize: 15,
+        fontSize: 12,
         textAlign: 'center',
         color: 'black',
         padding: 5
     },
     dateText: {
         fontFamily: 'IBMPlexSans-Bold',
-        fontSize: 15,
+        fontSize: 13,
         textAlign: 'center',
         color: 'white'
     },
