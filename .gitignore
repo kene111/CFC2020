@@ -1,2 +1,32 @@
+#
 .vscode
-/ml_model/.ipynb_checkpoints
+
+# Notebooks
+*.ipynb_checkpoints
+
+# API Keys
+**/twitter_secrets.json
+**/cloudant_secrets.json
+**/google_secrets.json
+**/mail_secrets.json
+**/watson_api_info.json
+**/api-keys.js
+
+# Censored words
+**/censored_words.json
+
+# Expo
+**/node_modules/**/*
+**/.expo/*
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+web-report/
+
+# macOS
+.DS_Store
