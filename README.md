@@ -37,7 +37,7 @@ A Natural Disaster Informant and Assistant (N.D.I.A) possessing attributes to he
 
 ## Demo video
 
-[![Watch the video](https://github.com/Code-and-Response/Liquid-Prep/blob/master/images/IBM-interview-video-image.png)](https://youtu.be/vOgCOoy_Bx0)
+[![Watch the video](images/video-thumbnail.png)](https://youtu.be/TOHYXlxarAY)
 
 ## The architecture
 
@@ -104,11 +104,11 @@ For more information on getting started with Expo, you can visit [their website]
 
 ## Live demo
 
-You can find a running system to test at [ndia.eu-gb.mybluemix.net/ndia/](https://ndia.eu-gb.mybluemix.net/ndia/).
+You can find a running system of the web platform to test at [ndia.eu-gb.mybluemix.net/ndia/](https://ndia.eu-gb.mybluemix.net/ndia/).
 
-For a live demo of the native application, download Expo Client on your mobile phone then open [expo.io/@daveeyd/cfc-mobile-app](https://expo.io/@daveeyd/cfc-mobile-app). The easiest option is the "Open project using Expo" option, which will automatically redirect you to the Expo app downloaded and show a preview of the app. Alternatively, you can scan the QR Code from the webpage on the Expo app to open the project.
+For a live demo of the native application, download Expo on your mobile phone then open [expo.io/@daveeyd/project-ndia](https://expo.io/@daveeyd/project-ndia) on your phone browser. The easiest option is the "Open project using Expo" option, which will automatically redirect you to the Expo app downloaded and show a preview of the app. Alternatively, you can scan the QR Code from the webpage on the Expo app to open the project.
 
-Because of restrictions from Apple when running applications on iOS, the native application is only accessible on Android. However, it can still be run on iOS using your LAN server by following the [test intructions](#running-the-tests).
+Because of restrictions from Apple when running applications on iOS, the native application is only accessible on Android. However, it can still be run on iOS using your local machine server by following the [test intructions](#running-the-tests).
 
 ## Built with
 
