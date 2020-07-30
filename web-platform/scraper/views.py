@@ -1,16 +1,22 @@
 from django.shortcuts import render
-#from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
-
 from django.http import HttpResponse
 from . models import Scraper, Twitter, Country
 from django.conf import settings
 import os
+import json
 from .apps import ScraperConfig
 from scraper.forms import RouteForm
 from django.views.generic import FormView
 from django.core.mail import send_mail
 from django.contrib import messages
+from django.db.models import Count
+import pandas as pd
+import datetime
+import time
+import threading
+import numpy as np
+from  django.db.models import Max
+import pytz
 
 
 #from django.views.generic import ListView
@@ -31,9 +37,15 @@ import re
 # --------------------------------------------------
 
 
+
+
+
 def scrape(request):
 
-	country = request.POST.get('country') # getting the country abbreviation for javascript
+	country = request.POST.get('country')  # getting the country abbreviation for javascript
+
+
+	#if request.method == 'POST':
 	Scraper.objects.all().delete()
 	Country.objects.all().delete()
 
@@ -300,6 +312,7 @@ def scrape(request):
 	"ZM":"Zambia",
 	"ZW":"Zimbabwe"}
 
+
 	for container in latest_news_container:
 	    try:
 	        headlines.append(container.a.text)
@@ -325,22 +338,23 @@ def scrape(request):
 	for i in range(len(headlines)):
 		if country == countries[i]:
 			Country.objects.create(Headlines = headlines[i], Links = links[i], Countries = abbv[countries[i]], Date_Uploaded = times[i])
-		
-    	
+
+						
     # General scraper ........
 	for i in range(len(headlines)):
 		Scraper.objects.create(Headlines = headlines[i], Links = links[i], Countries = abbv[countries[i]], Date_Uploaded = times[i])
 
+	#Scraper.objects.exclude(Countries = coun_try['country'])
 
 	results  = Scraper.objects.exclude(Countries = country)
 	c_results = Country.objects.all()
 
-
-	context = {'results':results,
-	           'c_results':c_results,
-	            'title':'Latest Information'}
-
+	context = {'results':results,'c_results':c_results, 'title':'Latest Information'}
 	return render(request, 'scraper/scraped.html', context)
+
+
+	
+
 
 
 	# https://stackoverflow.com/questions/18598237/passing-variable-from-javascript-to-server-django
@@ -385,7 +399,7 @@ def tweet(request):
 	# Loading the Disaster Tweets model...
 	for disaster in disaster_list:
 	    for tweet in tweet_dict[disaster]:
-	        if ScraperConfig.model.predict([tweet['text']]) == 0: #ScraperConfig.text_prep.transform()
+	        if ScraperConfig.model.predict([tweet['text']]) == 0: #ScraperConfig.text_prep.transform() 
 	            tweet_dict[disaster].remove(tweet)
 
 
@@ -450,15 +464,96 @@ def map(request):
 		coor =  request.POST.get('location') #  request.POST['location']
 		address = request.POST.get('address')  #  request.POST['address']
 		subject ='Locate ME!'
-		message =' I need help! I am at this address: {}, and these are my coordinates: {} if needed. A route to my current position can be gotten by pasting my address on the route engine on https://n-dia.herokuapp.com/scraper/maps/'.format(address, coor)
+		message =' I need help! I am at this address: {}, and these are my coordinates: {} if needed. A route to my current position can be gotten by pasting my address on the route engine on https://ndia.eu-gb.mybluemix.net/scraper/maps/'.format(address, coor)
 		email_from = settings.EMAIL_HOST_USER
 		reciever = ['kenechiojukwu@gmail.com']
 		send_mail(subject, message, email_from, reciever, fail_silently = False)
 		messages.success(request, 'Your location has been successfully sent',extra_tags='alert')
-		return redirect('scraper-maps') #/scraper/maps/
+		return redirect('/scraper/maps/') #/scraper/maps/
 	
 
 	return render(request,'scraper/maps.html', {'title': 'Maps','Rform': Rform})
+
+
+
+
+
+
+def prediction(request):
+
+
+	if request.method == 'POST':
+
+		Happened_E =   []
+		Happened_T =   []
+		Happened_V  =  []
+		latitude   =  []
+		longitude  =  []
+
+		today = datetime.date.today()
+		date_list =  [today + datetime.timedelta(days=x) for x in range(21)]
+
+		def date_seperation(lis):
+			year = []
+			month = []
+			day = []
+			for l in lis:
+				l = str(l)
+				str_date = l.split('-')
+				str_date = list(str_date)
+				day.append(int("".join(str_date[2])))
+				year.append(int("".join(str_date[0])))
+				month.append(int("".join(str_date[1])))
+			return(year, month,day)
+
+		year, month, day = date_seperation(date_list)
+
+		current_stat = pd.DataFrame()
+
+		current_stat['year'] = year
+		current_stat['month'] = month
+		current_stat['day'] = day
+
+		lat = request.POST.get('lat')
+		lon = request.POST.get('long')
+
+		for i in range(len(current_stat)):
+			latitude.append(lat)
+			longitude.append(lon)
+
+
+		current_stat['latitude'] = latitude
+		current_stat['longitude'] = longitude
+		
+
+		Earth_x = ScraperConfig.EarthClass.predict(current_stat)
+		Tsu_x = ScraperConfig.TsuClass.predict(current_stat)
+		Volc_x = ScraperConfig.VolClass.predict(current_stat)
+
+		for i in range(len(Earth_x)):
+			if Earth_x[i] == 0:
+				pass
+			if Earth_x[i] == 1:
+				Happened_E.append(str(date_list[i]))#Earth_p.objects.create(Yes_e = date_list[i])
+
+		for i in range(len(Tsu_x)):
+			if Tsu_x[i] == 0:
+				pass
+			if Tsu_x[i] == 1:
+				Happened_T.append(str(date_list[i]))#Tsu_p.objects.create(Yes_e = date_list[i])
+
+		for i in range(len(Volc_x)):
+			if Volc_x[i] == 0:
+				pass
+			if Volc_x[i] == 1:
+				Happened_V.append(str(date_list[i]))#Volc_p.objects.create(Yes_e = date_list[i])
+
+	predictions = {'title':'Home','Happened_E': Happened_E, 'Happened_T': Happened_T,'Happened_V': Happened_V}
+	return render(request,'scraper/dump_list.html', predictions)
+
+
+
+
 
 
 

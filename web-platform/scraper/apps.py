@@ -6,16 +6,16 @@ import dill
 import os
 #import pickle
 #import joblib
-#from sklearn.base import BaseEstimator, TransformerMixin
-#import re
-#from nltk.corpus import stopwords 
-#from nltk.tokenize import word_tokenize
+from sklearn.base import BaseEstimator, TransformerMixin
+import re
+from nltk.corpus import stopwords 
+from nltk.tokenize import word_tokenize
 
 
 class ScraperConfig(AppConfig):
     name = 'scraper'
 
-#   class TextPreprocessor(BaseEstimator, TransformerMixin):
+#    class TextPreprocessor(BaseEstimator, TransformerMixin):
 #        def __init__(self):
 #            pass
 #        
@@ -24,7 +24,6 @@ class ScraperConfig(AppConfig):
 #
 #        @staticmethod
 #        def clean_text(text):
-#
 #
 #            stop_words = set(stopwords.words('english'))
 #            stop_words.update(['thi', 'amp', 'wa', 'via', 'ha', 'us', 'will', 'new', "n't", 'like', '\n'])
@@ -66,11 +65,34 @@ class ScraperConfig(AppConfig):
 #
 #    
 #    text_prep = TextPreprocessor()
-#    
-#
+    
+
     model_path = os.path.join(settings.MODEL_API, 'natural_disaster_text_model.dill')
     dill._dill._reverse_typemap['ClassType'] = type # Had to add this to stop a strange error from modern dill packages
 
     with open(model_path, 'rb') as f:
         model = dill.load(f)     
+
+    Tsumodel_p = os.path.join(settings.MODEL_API, 'tsu_classification_Model.dill')
+    dill._dill._reverse_typemap['ClassType'] = type # Had to add this to stop a strange error from modern dill packages
+
+    with open(Tsumodel_p, 'rb') as f:
+        TsuClass = dill.load(f)
+
+
+
+    earthquake_p = os.path.join(settings.MODEL_API, 'earthquake_classification_model.dill')
+    dill._dill._reverse_typemap['ClassType'] = type # Had to add this to stop a strange error from modern dill packages
+
+    with open(earthquake_p, 'rb') as f:
+        EarthClass = dill.load(f)
+
+
+
+    volcano_p = os.path.join(settings.MODEL_API, 'volcano_classification_model.dill')
+    dill._dill._reverse_typemap['ClassType'] = type # Had to add this to stop a strange error from modern dill packages
+
+    with open(volcano_p, 'rb') as f:
+        VolClass = dill.load(f)
+
 

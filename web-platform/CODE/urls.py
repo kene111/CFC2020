@@ -17,12 +17,9 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-#from scraper import views as scraper_views
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('chatbot/', include('chatbot.urls')), # chatbot/
+    path('ndia/', include('ndia.urls')),
     path('scraper/', include('scraper.urls')),
-    ]#+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
+    ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,0 +1,6 @@
+ applications:
+  - name: CODE   
+    host: ndia
+    memory: 256M
+    #command: 
+    #buildpack: https://github.com/cloudfoundry/buildpack-python.git

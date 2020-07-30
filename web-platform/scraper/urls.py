@@ -6,5 +6,6 @@ from . import views
 urlpatterns = [
     path('infomation/', views.scrape, name = 'scraper-scraped'),
     path('twitter_infomation/', views.tweet, name = 'scraper-tweets'),
+    path('prediction/',  views.prediction, name = 'scraper-prediction'),
     path('maps/', views.map, name = 'scraper-maps'),    
 ]
