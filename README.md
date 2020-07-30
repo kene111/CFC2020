@@ -1,6 +1,6 @@
 # Natural Disaster Informant and Assistant (N.D.I.A)
 
-[![License](https://img.shields.io/badge/License-Apache2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0) [![N.D.I.A Website](https://img.shields.io/badge/View-Website-blue)](https://n-dia.herokuapp.com/chatbot/ndia/)
+[![License](https://img.shields.io/badge/License-Apache2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0) [![N.D.I.A Website](https://img.shields.io/badge/View-Website-blue)](https://ndia.eu-gb.mybluemix.net/ndia/)
 
 GitHub repository for Project N.D.I.A (Natural Disaster Informant and Assistant), our proposed solution for the Call for Code 2020 Competition on halting the effects of Climate Change.
 
@@ -114,6 +114,7 @@ Because of restrictions from Apple when running applications on iOS, the native 
 
 * [Watson Assistant](https://www.ibm.com/cloud/watson-assistant/) - AI Platform used for the chatbot 
 * [IBM Cloudant](https://cloud.ibm.com/catalog?search=cloudant#search_results) - The NoSQL database used
+* [PostgreSQL](https://cloud.ibm.com/catalog/services/elephantsql) - The PostgreSQL database used
 * [Google Maps Platform](https://developers.google.com/maps/documentation) - APIs used for building the maps feature
 * [Twitter Search API](https://developer.twitter.com/en/docs/tweets/search/api-reference/get-search-tweets) - API used for getting tweets related to natural disasters
 * [News Now](https://newsnow.co.uk/) - News Platform used for getting immediate natural disaster news from around the world
