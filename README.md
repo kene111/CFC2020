@@ -104,7 +104,7 @@ For more information on getting started with Expo, you can visit [their website]
 
 ## Live demo
 
-You can find a running system to test at [n-dia.herokuapp.com/chatbot/ndia/](https://ndia.eu-gb.mybluemix.net/ndia/).
+You can find a running system to test at [ndia.eu-gb.mybluemix.net/ndia/](https://ndia.eu-gb.mybluemix.net/ndia/).
 
 For a live demo of the native application, download Expo Client on your mobile phone then open [expo.io/@daveeyd/cfc-mobile-app](https://expo.io/@daveeyd/cfc-mobile-app). The easiest option is the "Open project using Expo" option, which will automatically redirect you to the Expo app downloaded and show a preview of the app. Alternatively, you can scan the QR Code from the webpage on the Expo app to open the project.
 
