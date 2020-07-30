@@ -60,12 +60,12 @@ const About = ({ navigation }) => {
                     the user can pass across information on location and the severity of the predicament.
                     {'\n\n'} The project was created as a result of the <HyperLink text='2020 IBM Call For Code Competition' link='https://www.callforcode.org' /> which urged for the use
                     of technology in climate change to help halt and even reverse its effect on the world.
-                    {'\n\n'} You can visit the project website<HyperLink text='here' link='https://n-dia.herokuapp.com/chatbot/ndia/' />.
+                    {'\n\n'} You can visit the project website<HyperLink text='here' link='https://ndia.eu-gb.mybluemix.net/ndia/' />.
                 </Text>
                 <View style={{flexDirection: 'row', marginTop: 20}}>
                     <GitHubIcon />
                     <View style={{marginLeft: 10}}>
-                        <HyperLink text='View GitHub repository' link='https://www.github.com' />
+                        <HyperLink text='View GitHub repository' link='https://github.com/kene111/CFC2020' />
                     </View>
                 </View>
             </ScrollView>

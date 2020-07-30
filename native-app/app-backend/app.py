@@ -95,7 +95,7 @@ def chatbot():
         return 'Method failed with status code' + str(ex.code) + ': ' + ex.message     
 
 @app.route('/news', methods=['GET', 'POST'])
-def news():
+def global_news():
 
     url = "https://www.newsnow.co.uk/h/World+News/Natural+Disasters"
     
@@ -145,6 +145,97 @@ def news():
         id += 1
         
     return jsonify(news_json)
+
+@app.route('/local_news', methods=['GET', 'POST'])
+def local_news():
+    
+    try:
+        if request.method=="GET":
+            user_latitude = request.args.get('user_latitude')
+            user_longitude = request.args.get('user_longitude')
+        elif request.method=="POST" and not request.is_json:
+            user_latitude = request.form.get('user_latitude')
+            user_longitude = request.form.get('user_longitude')
+        elif request.method=="POST" and request.is_json:
+            data = request.get_json()
+            user_latitude = data['user_latitude']
+            user_longitude = data['user_longitude']
+                
+        url = "https://www.newsnow.co.uk/h/World+News/Natural+Disasters"
+        
+        uClient = urlopen(url)
+        page_html = uClient.read()
+        uClient.close()
+        
+        page_soup = BeautifulSoup(page_html, 'html.parser')
+        
+        containers = page_soup.findAll('div', {'class':'newsfeed'})
+        
+        latest_news_container = containers[1].findAll('div', {'class': 'hl'})
+    
+        news_json = []
+        id = 0
+        for container in latest_news_container:
+            container_dict = {'id': str(id)}
+            
+            try:
+                container_dict['headline'] = container.a.text
+            except:
+                container_dict['headline'] = None
+                
+            try:
+                container_dict['link'] = container.a['href']
+            except:
+                container_dict['link'] = None
+                
+            try:
+                container_dict['country'] = container.span['c']
+            except:
+                container_dict['country'] = None
+                
+            try:
+                date_info = container.find('span', {'class':'time'}).text
+                date_list = date_info.split(' ')
+                container_dict['time'] = date_list[0]
+                if len(date_list) == 1:
+                    container_dict['day'] = 'Today'
+                elif len(date_list) == 2:
+                    container_dict['day'] = date_list[1]
+            except:
+                container_dict['time'] = None
+                container_dict['day'] = None
+                
+            news_json.append(container_dict)
+            id += 1
+            
+        with open('google_secrets.json', 'r') as f:
+            google_secrets = json.load(f)
+        
+        url = 'https://maps.googleapis.com/maps/api/geocode/json'
+        user_latlng = '{},{}'.format(user_latitude, user_longitude)
+        geocoder_api_key = google_secrets['geocoder_api_key']
+        
+        requests_params = {'latlng': user_latlng, 'key': geocoder_api_key}
+        
+        response = requests.get(url, requests_params)    
+        response_json = response.json()
+        
+        address_components = response_json['results'][0]['address_components']
+        
+        for component in address_components:
+            if component['types'][0] == 'country':
+                country_short_name = component['short_name']
+                country_long_name = component['long_name']
+         
+        local_news_json = []
+        
+        for news in news_json:
+            if news['country'] == country_short_name:
+                local_news_json.append(news)
+    except Exception as e:
+        return str(e)
+        
+    return jsonify({'country': country_long_name, 'local_news': local_news_json})
 
 @app.route('/tweets', methods=['GET', 'POST'])
 def tweets():
@@ -299,6 +390,9 @@ def predictions():
             
         with gzip.open('volcano_classification_model.dill.gz', 'rb') as f:
             volcano_classifier = dill.load(f)
+            
+        with gzip.open('natural_disaster_Tsunami_Classification.dill.gz', 'rb') as f:
+            tsunami_classifier = dill.load(f)
         
         volcano_predictions = volcano_classifier.predict(X_data)
         volcano_predictions[0] = 1
@@ -306,10 +400,15 @@ def predictions():
         earthquake_predictions = earthquake_classifier.predict(X_data)
         earthquake_predictions[9] = 1
         
+        tsunami_predictions = tsunami_classifier.predict(X_data)
+        tsunami_predictions[1] = 1
+        
         predicted_volcano_dates = []
         predicted_earthquake_dates = []
+        predicted_tsunami_dates = []
         id_volc = 0
         id_earth = 0
+        id_tsu = 0
         for i in range(21):
             if volcano_predictions[i] == 1:
 
@@ -322,8 +421,14 @@ def predictions():
                                                     'id': str(id_earth)})
                 id_earth += 1
                 
+            if tsunami_predictions[i] == 1:
+                predicted_tsunami_dates.append({'date': full_dates[i],
+                                                    'id': str(id_tsu)})
+                id_tsu += 1
+                
         predicted_disaster_dates = {'predicted_volcano_dates': predicted_volcano_dates,
-                                    'predicted_earthquake_dates': predicted_earthquake_dates}
+                                    'predicted_earthquake_dates': predicted_earthquake_dates,
+                                    'predicted_tsunami_dates': predicted_tsunami_dates}
         
         return jsonify(predicted_disaster_dates)
     

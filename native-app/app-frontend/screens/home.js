@@ -16,49 +16,33 @@ import ActivityLoading from '../components/activity-loading';
 import { AppLoading } from 'expo';
 import * as Location from 'expo-location';
 
-import apiKeys from '../api-keys';
-
 import fetchFonts from '../ibm-fonts';
-
-const reverseGeocoder = async (userCoords) => {
-    try {
-        const KEY = apiKeys.geocoderApiKey;
-        let resp = await fetch (`https://maps.googleapis.com/maps/api/geocode/json?latlng=${userCoords.latitude},${userCoords.longitude}&key=${KEY}`, {
-        method: 'GET',    
-        headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        let respJson = await resp.json();
-        let address_components = respJson.results[0].address_components
-        for (var i=0; i<address_components.length; i++) {
-            if(address_components[i].types[0] == 'country') {
-                return ({
-                    countryLongName: address_components[i].long_name,
-                    countryShortName: address_components[i].short_name
-                }) 
-            }
-        }
-    } catch (error) {
-        return error;
-    }
-}
 
 const Home = ({ navigation }) => {
     const [fontLoaded, setFontLoaded] = useState(false);
     const [errorMsg, setErrorMsg] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [data, setData] = useState([]);
-    const [countryName, setCountryName] = useState('');
     const [refreshing, setRefreshing] = useState(false);
+    const [countryName, setCountryName] = useState(null)
 
-    const getCountryNews = shortName => {
-        fetch('https://ndia-api-boisterous-duiker-ts.eu-gb.mybluemix.net/news')
+
+    const getCountryNews = (latitude, longitude) => {
+        let data = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                user_latitude: latitude,
+                user_longitude: longitude
+            })
+        }
+        fetch('https://ndia-api-boisterous-duiker-ts.eu-gb.mybluemix.net/local_news', data)
             .then((response) => response.json())
             .then((responseJson) => {
-                setData(
-                    responseJson.filter(newsInfo => newsInfo.country == shortName)
-                )
+                setData(responseJson.local_news);
+                setCountryName(responseJson.country);
             })
             .catch((error) => console.error(error))
             .finally(() => {
@@ -67,28 +51,19 @@ const Home = ({ navigation }) => {
             });
     }
 
-    const onRefresh =  useCallback(() => {
-        setRefreshing(true);
-        getCountryNews(countryName.countryShortName)
-    }, [refreshing]);
-
     useEffect(() => {
         (async () => {
             let { status } = await Location.requestPermissionsAsync();
             if (status != 'granted') {
                 setErrorMsg('Permission to access location was denied');
             }
-            let myLocation = await Location.getCurrentPositionAsync({});
-            let coords = {
-                latitude: myLocation.coords.latitude,
-                longitude: myLocation.coords.longitude
-            };
-            let countryInfo = await reverseGeocoder(coords);
-            setCountryName(countryInfo);
-            getCountryNews(countryInfo.countryShortName);
-
+                let myLocation = await Location.getCurrentPositionAsync({});
+                let coords = {
+                    latitude: myLocation.coords.latitude,
+                    longitude: myLocation.coords.longitude
+                };
+                getCountryNews(coords.latitude, coords.longitude);
         })();
-
     }, []);
 
 
@@ -108,84 +83,76 @@ const Home = ({ navigation }) => {
             imageSource= {require('../images/2020-cfc-512.png')}
             nav={navigation}
         >
-        <View style={styles.center}>
-            <View style={styles.scroll}>
-                <View style={styles.appInfo}>
-                    <View style={styles.homeHeading}>
-                        <View style={{marginRight: 20}}>
-                            <Text style={styles.subtitle}>Welcome to</Text>
-                            <Text style={styles.title}>N.D.I.A</Text>
-                        </View>
-                        <View style={styles.imageZone}>
-                            <Image 
-                                style={styles.imageStyle}
-                                source={require('../images/logo-512.png')}
-                            />
-                        </View>
-                    </View>
-                    <View style={styles.contentHeader}>
-                        <Text style={styles.content}>
-                            Your Natural Disaster Informant and Assistant for up to date news and safety tips on
-                            natural disasters happening around the globe
-                        </Text>
-                    </View>
-                    <View style={styles.buttonGorup}>
-                        <TouchableOpacity onPress={() => navigation.navigate('About')}>
-                            <Text style={styles.button}>Learn More about N.D.I.A here</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-                <View style={styles.listOuter}>
-                    <View style={styles.listContainer}>
-                        {isLoading ? <ActivityLoading title="Loading Disaster News from your country" />: (
-                            data.length > 0 ?
-                            <View>
-                                <View style={styles.newsHeaderContainer}>  
-                                    <Text style={styles.newsHeader}>{`Disaster News from ${countryName.countryLongName}`}</Text>
-                                    <View styles={styles.newsButtonGorup}>
-                                        <TouchableOpacity onPress={() => navigation.navigate('News')}>
-                                            <Text style={styles.newsButton}>More News</Text>
-                                        </TouchableOpacity>
-                                    </View>
-                                </View>
-                                <FlatList
-                                    data={data}
-                                    KeyExtractor={({ id }, index) => id}
-                                    renderItem={ ({ item }) => (
-                                        <NewsHeadline 
-                                            headline={item.headline}
-                                            link={item.link}
-                                            country={item.country}
-                                            time={item.time}
-                                            day={item.day}
-                                        />
-                                    )}
-                                    refreshControl={
-                                        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-                                    }
+            <View style={styles.center}>
+                <View style={styles.scroll}>
+                    <View style={styles.appInfo}>
+                        <View style={styles.homeHeading}>
+                            <View style={{marginRight: 20}}>
+                                <Text style={styles.subtitle}>Welcome to</Text>
+                                <Text style={styles.title}>N.D.I.A</Text>
+                            </View>
+                            <View style={styles.imageZone}>
+                                <Image 
+                                    style={styles.imageStyle}
+                                    source={require('../images/logo-512.png')}
                                 />
-                            </View> : (
-                                <View style={{padding: 20}}>
-                                    <Text style={{...{textAlign: 'center'}, ...styles.newsHeader}}>No reported disaster news from your country</Text>
-                                    <View style={{flexDirection: 'row', marginTop: 10, alignItems: 'center', justifyContent: 'center'}}>
-                                        <View style={{...{padding: 10}, ...styles.buttonGorup}}>
+                            </View>
+                        </View>
+                        <View style={styles.contentHeader}>
+                            <Text style={styles.content}>
+                                Your Natural Disaster Informant and Assistant for up to date news and safety tips on
+                                natural disasters happening around the globe
+                            </Text>
+                        </View>
+                        <View style={styles.buttonGorup}>
+                            <TouchableOpacity onPress={() => navigation.navigate('About')}>
+                                <Text style={styles.button}>Learn More about N.D.I.A here</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                    <View style={styles.listOuter}>
+                        <View style={styles.listContainer}>
+                            {isLoading ? <ActivityLoading title="Loading Disaster News from your country" />: (
+                                data.length > 0 && countryName ?
+                                <View style={{height: '100%', width: '100%'}}>
+                                    <View style={styles.newsHeaderContainer}>  
+                                        <Text style={styles.newsHeader}>{`Disaster News from ${countryName}`}</Text>
+                                        <View styles={styles.newsButtonGorup}>
                                             <TouchableOpacity onPress={() => navigation.navigate('News')}>
-                                                <Text style={styles.button}>Global News</Text>
+                                                <Text style={styles.newsButton}>More News</Text>
                                             </TouchableOpacity>
                                         </View>
-                                        <View style={{...{padding: 10}, ...styles.buttonGorup}}>
-                                            <TouchableOpacity onPress={onRefresh}>
-                                                <Text style={styles.button}>Refresh</Text>
-                                            </TouchableOpacity>
-                                        </View>
-                                    </View>    
-                                </View>
-                            )
-                        )}
+                                    </View>
+                                    <FlatList
+                                        data={data}
+                                        KeyExtractor={({ id }, index) => id}
+                                        renderItem={ ({ item }) => (
+                                            <NewsHeadline 
+                                                headline={item.headline}
+                                                link={item.link}
+                                                country={item.country}
+                                                time={item.time}
+                                                day={item.day}
+                                            />
+                                        )}
+                                    />
+                                </View> : (
+                                    <View style={{padding: 20}}>
+                                        <Text style={{...{textAlign: 'center'}, ...styles.newsHeader}}>No reported disaster news from your country</Text>
+                                        <View style={{marginTop: 10, alignItems: 'center', justifyContent: 'center'}}>
+                                            <View style={{...{padding: 10}, ...styles.buttonGorup}}>
+                                                <TouchableOpacity onPress={() => navigation.navigate('News')}>
+                                                    <Text style={styles.button}>Global News</Text>
+                                                </TouchableOpacity>
+                                            </View>
+                                        </View>    
+                                    </View>
+                                )
+                            )}
+                        </View>
                     </View>
                 </View>
             </View>
-        </View>
         </PageLayout>
     );
 };
@@ -280,7 +247,7 @@ const styles = StyleSheet.create({
     },
     newsHeader: {
         fontFamily: 'IBMPlexSans-Medium',
-        fontSize: 16
+        fontSize: 14
     },
     newsHeaderContainer: {
         paddingTop: 5,
