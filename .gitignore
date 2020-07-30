@@ -5,19 +5,19 @@
 *.ipynb_checkpoints
 
 # API Keys
-**/twitter_secrets.json
-**/cloudant_secrets.json
-**/google_secrets.json
-**/mail_secrets.json
-**/watson_api_info.json
-**/api-keys.js
+twitter_secrets.json
+cloudant_secrets.json
+google_secrets.json
+mail_secrets.json
+watson_api_info.json
+api-keys.js
 
 # Censored words
-**/censored_words.json
+censored_words.json
 
 # Expo
-**/node_modules/**/*
-**/.expo/*
+node_modules/
+.expo/
 npm-debug.*
 *.jks
 *.p8
