@@ -4,13 +4,7 @@
       "intent": "Flood_Travel",
       "examples": [
         {
-          "text": "Should I walk through flood waters"
-        },
-        {
           "text": "Should I pass through a flooded roadway?"
-        },
-        {
-          "text": "Should I travel across a flood zone?"
         },
         {
           "text": "Can I drive though a flooded area?"
@@ -23,6 +17,12 @@
         },
         {
           "text": "Is it safe to swim in flood waters?"
+        },
+        {
+          "text": "Should I travel across a flood zone?"
+        },
+        {
+          "text": "Should I walk through flood waters"
         }
       ],
       "description": "Passing through a flood zone"
@@ -71,15 +71,6 @@
         }
       ],
       "description": "Surviving during a flood"
-    },
-    {
-      "intent": "Reply_Eni",
-      "examples": [
-        {
-          "text": "Yo bu se yooo"
-        }
-      ],
-      "description": ""
     },
     {
       "intent": "Earthquake_About",
@@ -391,7 +382,7 @@
       "intent": "General_Ending",
       "examples": [
         {
-          "text": "I have got to go"
+          "text": "I d like to stop doing this"
         },
         {
           "text": "Time to go"
@@ -448,7 +439,7 @@
           "text": "I want to quit"
         },
         {
-          "text": "I d like to stop doing this"
+          "text": "I have got to go"
         },
         {
           "text": "I am out of here"
@@ -511,16 +502,16 @@
       "intent": "Wildfire_After",
       "examples": [
         {
-          "text": "what do i do after a wildfire"
+          "text": "can i go outside with the smoke"
         },
         {
           "text": "is it safe to go outside after the flames of the wildfire are gone"
         },
         {
-          "text": "recovering from a wildfire"
+          "text": "what do i do after a wildfire"
         },
         {
-          "text": "can i go outside with the smoke"
+          "text": "recovering from a wildfire"
         }
       ],
       "description": "Recovering from a wildfire"
@@ -529,13 +520,19 @@
       "intent": "Flood_After",
       "examples": [
         {
-          "text": "Flooding has stopped, am I safe?"
+          "text": "Flood aftermath"
         },
         {
-          "text": "Is it ok to return home?"
+          "text": "Flood clean up"
         },
         {
-          "text": "When can I go home?"
+          "text": "the flood is gone"
+        },
+        {
+          "text": "i am ready to head back to the apartment"
+        },
+        {
+          "text": "what happens after a flood"
         },
         {
           "text": "When do I return to my house after a flood?"
@@ -550,19 +547,13 @@
           "text": "What should I do when the flooding goes away?"
         },
         {
-          "text": "the flood is gone"
+          "text": "Flooding has stopped, am I safe?"
         },
         {
-          "text": "Flood clean up"
+          "text": "Is it ok to return home?"
         },
         {
-          "text": "Flood aftermath"
-        },
-        {
-          "text": "i am ready to head back to the apartment"
-        },
-        {
-          "text": "what happens after a flood"
+          "text": "When can I go home?"
         }
       ],
       "description": "Recovering from a flood"
@@ -574,19 +565,19 @@
           "text": "i need to call an emergency agency"
         },
         {
-          "text": "a natural disaster is happening right now"
-        },
-        {
-          "text": "give me emergency numbers"
+          "text": "how do i get help"
         },
         {
           "text": "who should i call in case of a natural disaster"
         },
         {
-          "text": "how do i get help"
+          "text": "who can i get assistance from"
         },
         {
-          "text": "who can i get assistance from"
+          "text": "give me emergency numbers"
+        },
+        {
+          "text": "a natural disaster is happening right now"
         }
       ],
       "description": "Give directions to emergency numbers"
@@ -594,12 +585,6 @@
     {
       "intent": "Flood_Danger",
       "examples": [
-        {
-          "text": "Am I safe around floods?"
-        },
-        {
-          "text": "Are floods dangerous?"
-        },
         {
           "text": "Should I be careful around floods?"
         },
@@ -614,6 +599,12 @@
         },
         {
           "text": "How much damage can flooding cause?"
+        },
+        {
+          "text": "Am I safe around floods?"
+        },
+        {
+          "text": "Are floods dangerous?"
         }
       ],
       "description": "Dangers of floods"
@@ -622,25 +613,25 @@
       "intent": "Earthquake_After",
       "examples": [
         {
-          "text": "where should i go once the earthquake is over"
-        },
-        {
-          "text": "am i safe after an earthquake"
-        },
-        {
-          "text": "what should be done after an earthquake"
-        },
-        {
-          "text": "how do i recover from an earthquake"
+          "text": "evacuate after an earthquake"
         },
         {
           "text": "is it ok to go home after an earthquake"
         },
         {
-          "text": "evacuate after an earthquake"
+          "text": "how do i recover from an earthquake"
         },
         {
           "text": "what to do after an earthquake"
+        },
+        {
+          "text": "what should be done after an earthquake"
+        },
+        {
+          "text": "am i safe after an earthquake"
+        },
+        {
+          "text": "where should i go once the earthquake is over"
         }
       ],
       "description": "Recovering from an Earthquake"
@@ -900,26 +891,6 @@
     },
     {
       "type": "standard",
-      "title": "#Earthquakes_About",
-      "output": {
-        "generic": [
-          {
-            "values": [
-              {
-                "text": "Earthquake, any sudden shaking of the ground caused by the passage of seismic waves through Earth’s rocks. Seismic waves are produced when some form of energy stored in Earth’s crust is suddenly released, usually when masses of rock straining against one another suddenly fracture and “slip.” Earthquakes occur most often along geologic faults, narrow zones where rock masses move in relation to one another. The major fault lines of the world are located at the fringes of the huge tectonic plates that make up Earth’s crust."
-              }
-            ],
-            "response_type": "text",
-            "selection_policy": "sequential"
-          }
-        ]
-      },
-      "conditions": "#Earthquake_About",
-      "dialog_node": "node_9_1588171145203",
-      "previous_sibling": "node_2_1594731762772"
-    },
-    {
-      "type": "standard",
       "output": {
         "generic": [
           {
@@ -1125,24 +1096,22 @@
     },
     {
       "type": "standard",
+      "title": "#Earthquakes_About",
       "output": {
         "generic": [
           {
             "values": [
               {
-                "text": "Yo bu se yo love of David's life"
-              },
-              {
-                "text": "Yo bu se yo, what can I do for David's love"
+                "text": "Earthquake, any sudden shaking of the ground caused by the passage of seismic waves through Earth’s rocks. Seismic waves are produced when some form of energy stored in Earth’s crust is suddenly released, usually when masses of rock straining against one another suddenly fracture and “slip.” Earthquakes occur most often along geologic faults, narrow zones where rock masses move in relation to one another. The major fault lines of the world are located at the fringes of the huge tectonic plates that make up Earth’s crust."
               }
             ],
             "response_type": "text",
-            "selection_policy": "random"
+            "selection_policy": "sequential"
           }
         ]
       },
-      "conditions": "#Reply_Eni",
-      "dialog_node": "node_2_1594731762772",
+      "conditions": "#Earthquake_About",
+      "dialog_node": "node_9_1588171145203",
       "previous_sibling": "node_5_1594732585474"
     },
     {
