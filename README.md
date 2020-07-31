@@ -90,8 +90,7 @@ Before running the project, the dependencies used need to be installed first. Si
 ```bash
 npm install
 ```
-After some time, you will be indicated that all dependencies have been installed.
-Note: Ensure all versions of the dependencies are compatible with Expo.
+After some time, you will be indicated that all dependencies have been installed. Ensure that all versions of the dependencies are compatible with Expo.
 
 Then, still on the application frontend directory, run the project by entering
 
