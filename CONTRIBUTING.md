@@ -1,11 +1,6 @@
 # Contributing
 
-When contributing a major change to this repository, please first discuss the change you wish to make via an [issue](contributing/ISSUES.md) or via
-[Slack in the #droneaid channel](https://code-and-response.slack.com/join/shared_invite/enQtNzUzOTAzNDE3MTM4LWM4M2VlOTA3OWNjMjY0ZTI4MjQ2OTBjYjYwNmQ1NTdhYjZhODE5NjFkN2QyNmRkNDI5OTFlZmVjYTFhMmMwYmU). Minor issues can simply be addressed by sending by a pull request.
-
-All [pull requests](contributing/PULL-REQUESTS.md) will require you to ensure the change is certified via the [Developer Certificate of Origin (DCO)](https://github.com/apps/dco/). The DCO is a lightweight way for contributors to certify that they wrote or otherwise have the right to submit the code they are contributing to the project.
-
-Please note we have a [Code of Conduct](#code-of-conduct), please follow it in all your interactions with the project and its community.
+When contributing a major change to this repository, please first discuss the change you wish to make by sending an e-mail to tocrear.3@gmail.com so we can discuss the changes. Minor issues can simply be addressed by sending by a pull request.
 
 ## Pull Request Process
 
@@ -42,8 +37,7 @@ advances
 * Public or private harassment
 * Publishing others' private information, such as a physical or electronic
   address, without explicit permission
-* Other conduct which could reasonably be considered inappropriate in a
-  professional setting
+* Other conduct which could reasonably be considered inappropriate in a professional setting
 
 ### Our Responsibilities
 
@@ -69,7 +63,7 @@ further defined and clarified by project maintainers.
 ### Enforcement
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported by contacting the project team on [Slack in the #droneaid channel](https://code-and-response.slack.com/join/shared_invite/enQtNzUzOTAzNDE3MTM4LWM4M2VlOTA3OWNjMjY0ZTI4MjQ2OTBjYjYwNmQ1NTdhYjZhODE5NjFkN2QyNmRkNDI5OTFlZmVjYTFhMmMwYmU). 
+reported by contacting the project team through our e-mail address tocrear.3@gmail.com. 
 
 All complaints will be reviewed and investigated and will result in a response that is deemed necessary and appropriate to the circumstances. The project team is obligated to maintain confidentiality with regard to the reporter of an incident.Further details of specific enforcement policies may be posted separately.
 
