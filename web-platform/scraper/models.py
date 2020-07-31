@@ -19,10 +19,13 @@ class Scraper(models.Model):
 	#	abstract =True
 
 
-class Country(Scraper):
-	pass
+# Inheritance is a better way to go about creating the model Country, but due to an error I could not resolve, this was the best option.
+class Country(models.Model):
+	Headlines = models.CharField(max_length=3000)
+	Links = models.TextField(default="")
+	Countries = models.CharField(max_length=60, default="")
+	Date_Uploaded = models.TextField(default="")
 	
-
 	 
 	def __str__(self):
 		return self.Headlines

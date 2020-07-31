@@ -509,7 +509,7 @@ function toTheBack(position){
     var lat = position.coords.latitude;
     var long = position.coords.longitude;
     var location = lat +','+ long;
-    const key = "AIzaSyApZA2kzNzsYLa2IeGkOIB-XA87l5hz-vw";
+    const key = "";
 
     var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function() {

@@ -26,9 +26,9 @@ IBM_API = os.path.join(BASE_DIR, 'ndia/chatbot_api')
 SECRET_KEY = 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['ndia.eu-gb.mybluemix.net'] #'ndia.eu-gb.mybluemix.net'
+ALLOWED_HOSTS = [] #'ndia.eu-gb.mybluemix.net'
 
 
 # Application definition
@@ -82,8 +82,6 @@ WSGI_APPLICATION = 'CODE.wsgi.application'
 #'ENGINE': 'django.db.backends.sqlite3',
 #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 
-
-
 '''
 DATABASES = {
     'default': {
@@ -107,6 +105,9 @@ DATABASES = {
         'PORT':'5432',
     },
 }
+
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
