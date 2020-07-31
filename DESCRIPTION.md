@@ -26,7 +26,7 @@ On the web platform N.D.I.A provides an outlet to warn non-affected individuals 
 
 Check out Project N.D.I.A's website [here](https://ndia.eu-gb.mybluemix.net/ndia/) and view the mobile application by following [these steps](https://github.com/kene111/CFC2020#live-demo).
 
-## Unique Project Features
+## Unique Project Attributes
 
 The project’s uniqueness can be attributed to the fact that it functions from the perspective of the individual that can potentially be affected by the disaster. The website and mobile application are user friendly platforms that unlike anything previously established, act as a personal assistant and aid by providing beneficial information to mitigate the effects of a natural disaster on the user. Hence, apart from giving immediate disaster news as it occurs and providing essential tools for sharp response to disasters, Project N.D.I.A centers on predicting where a disaster is most likely to occur. Tree based classification machine learning models were trained on features such as days, months, years, as well as longitude and latitude coordinates of past occurrences of natural disasters. The aim was to see trends in the occurrence of past natural disasters and therefore forecast into the future possible days a disaster will most likely occur. For future purposes, additional features could be added for better predictive performances. Of course, the user is able to view these predictions easily and with the aid of the platform, plan the necessary steps that need to be taken to ensure the best case outcome actualizes. All these attributes combine to form a distinctive solution that is the ideal survival kit for otherwise vulnerable victims. The project’s individuality includes not just functionalities that help during disasters, but more importantly predicting them before their occurrence and ensuring the right steps are taken by users so the expected level of loss is drastically reduced, or even better, completely eliminated. 
 
@@ -46,4 +46,4 @@ Project N.D.I.A is an open source project constantly seeking improvement and pos
 
 ## Acknowledgments
 
-* [“Disaster risk reduction knowledge of local people in Nepal” by Gangalal and others](https://www.researchgate.net/publication/276385116_Disaster_risk_reduction_knowledge_of_local_people_in_Nepal)
+* [“Disaster risk reduction knowledge of local people in Nepal” by Gangalal Tuladhar and others](https://www.researchgate.net/publication/276385116_Disaster_risk_reduction_knowledge_of_local_people_in_Nepal)
